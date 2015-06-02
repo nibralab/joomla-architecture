@@ -6,7 +6,7 @@ namespace Joomla.Command {
         -Dispatcher <b>dispatcher</b>
         -Input <b>input</b>
         -Output <b>output</b>
-        +<b>run</b>()
+        +{abstract} <b>run</b>()
     }
     note as ControllerNote
         run() {
@@ -22,16 +22,16 @@ namespace Joomla.Command {
     interface Command {
         -string <b>name</b>
         -string <b>description</b>
-        +<b>execute</b>(Input, Output)
+        +{abstract} <b>execute</b>(Input, Output)
     }
 
     interface RecoverableCommand extends Command {
-        +<b>undo</b>()
-        +<b>redo</b>()
+        +{abstract} <b>undo</b>()
+        +{abstract} <b>redo</b>()
     }
 
     interface Dispatcher {
-        +<b>trigger</b>(string, mixed...)
+        +{abstract} <b>trigger</b>(string, mixed...)
     }
     Command -right-> Dispatcher: dispatcher
 
