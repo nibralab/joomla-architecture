@@ -1,0 +1,66 @@
+@startuml
+participant Controller
+participant Input
+participant Output
+participant CommandProcessor
+participant Command
+participant ArbObject
+participant Dispatcher
+
+note over ArbObject: This usually\nis a model.
+
+activate Input
+activate Output
+activate Dispatcher
+
+--> Controller: «create»
+activate Controller
+Controller --> Controller: init()
+activate Controller #pink
+Controller --> Command: «create»
+activate Command #pink
+Controller --> Controller
+deactivate Controller
+-> Controller: run()
+
+Controller --> CommandProcessor: «create»
+activate CommandProcessor
+group May be executed multiple times with different commands
+|||
+    Controller -> CommandProcessor: executeCommand(Command)
+    |||
+    CommandProcessor -> Dispatcher: trigger('beforeExecute', Command)
+    CommandProcessor <- Dispatcher: success
+    |||
+    group If success
+        CommandProcessor -> Command: execute(Input, Output)
+        group Command specific (example)
+            Command -> Input: getData()
+            Command <- Input: parameters
+            |||
+            Command -> ArbObject: doSomething()
+                activate ArbObject #pink
+                ArbObject --> Dispatcher: trigger($signal, $data...)
+                |||
+            Command <- ArbObject: results
+            deactivate ArbObject
+            Command --> Output: setResults()
+        |||
+        end
+        |||
+        CommandProcessor <-- Command
+        deactivate Command
+        |||
+        CommandProcessor --> Dispatcher: trigger('afterExecute', Command)
+        |||
+    end
+    |||
+    CommandProcessor --> Controller
+|||
+end
+deactivate CommandProcessor
+|||
+<-- Controller
+deactivate Controller
+@enduml
+

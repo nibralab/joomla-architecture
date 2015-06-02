@@ -1,0 +1,57 @@
+@startuml
+title Undo Plugin
+interface CommandPlugin implements Plugin {
+    +bool <b>onBeforeExecute</b>(Command)
+    +<b>onAfterExecute</b>(Command)
+}
+class UndoPlugin implements CommandPlugin {
+    -RecoverableCommand[] <b>undoStack</b>
+    -RecoverableCommand[] <b>redoStack</b>
+    +<b>onUndo</b>()
+    +<b>onRedo</b>()
+}
+note as UndoPluginNote
+    onBeforeExecute(Command $command) {
+        if (!($command instanceOf RecoverableCommand)) {
+            if ($command->getInput()->isInteractive()) {
+                // Warn the user: "Operation can not be undone. Continue?"
+                // return true on "yes", false on "no"
+            }
+        }
+        return true;
+    }
+
+    onAfterExecute(Command $command) {
+        if ($command instanceOf RecoverableCommand) {
+            array_push($this->undoStack, $command);
+            $this->redoStack = [];
+        } else {
+            $this->undoStack = [];
+        }
+    }
+
+    onUndo() {
+        $command = array_pop($this->undoStack);
+        if (empty($command)) {
+            return;
+        }
+        array_push($this->redoStack, $command);
+        $command->undo();
+    }
+
+    onRedo() {
+        $command = array_pop($this->redoStack);
+        if (empty($command)) {
+            return;
+        }
+        $dispatcher = $command->getDispatcher();
+        if ($dispatcher->trigger('beforeExecute', $command)) {
+            $command->redo();
+            $stack = $this->redoStack;
+            $dispatcher->trigger('afterExecute', $command);
+            $this->redoStack = $stack;
+        }
+    }
+end note
+UndoPlugin -r- UndoPluginNote
+@enduml

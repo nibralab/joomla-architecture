@@ -1,0 +1,23 @@
+@startuml
+title Undo / Redo Commands
+interface Command {
+    -string <b>name</b>
+    -string <b>description</b>
+    +<b>execute</b>(Input, Output)
+}
+class UndoCommand implements Command
+note as UndoCommandNote
+    execute(Input $input, Output $output) {
+        $this->dispatcher->trigger('undo');
+    }
+end note
+UndoCommand -d- UndoCommandNote
+
+class RedoCommand implements Command
+note as RedoCommandNote
+    execute(Input $input, Output $output) {
+        $this->dispatcher->trigger('redo');
+    }
+end note
+RedoCommand -d- RedoCommandNote
+@enduml

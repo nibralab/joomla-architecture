@@ -1,0 +1,18 @@
+@startuml
+title Frontends
+namespace Joomla.Frontend.HTTP {
+    class Request implements Joomla.Frontend.Input
+    class Response implements Joomla.Frontend.Output
+    note "index.php" as FrontControllerHTTP #white
+}
+namespace Joomla.Frontend.REST {
+    class Request implements Joomla.Frontend.Input
+    class Response implements Joomla.Frontend.Output
+    note "api.php" as FrontControllerREST #white
+}
+namespace Joomla.Frontend.CLI {
+    class Input implements Joomla.Frontend.Input
+    class Output implements Joomla.Frontend.Output
+    note "joomla.php" as FrontControllerCLI #white
+}
+@enduml

@@ -1,0 +1,78 @@
+@startuml
+title Command Structure
+namespace Joomla.Command {
+    interface Controller {
+        -CommandProcessor <b>processor</b>
+        -Dispatcher <b>dispatcher</b>
+        -Input <b>input</b>
+        -Output <b>output</b>
+        #<b>add</b>(Command)
+        #<b>addCommands</b>(Command[])
+        +<b>run</b>()
+    }
+    note as ControllerNote
+        run() {
+            // Determine command name from input
+            $this->processor->executeCommand(
+                $this->commands[$commandName]
+            );
+        }
+    end note
+
+    Controller .right. ControllerNote
+
+    interface Command {
+        -string <b>name</b>
+        -string <b>description</b>
+        +<b>execute</b>(Input, Output)
+    }
+
+    interface RecoverableCommand extends Command {
+        +<b>undo</b>()
+        +<b>redo</b>()
+    }
+
+    interface Dispatcher {
+        +<b>trigger</b>(string, mixed...)
+    }
+    Command -right-> Dispatcher: dispatcher
+
+    Controller o--> "1..n" Command: commands
+
+    class MacroCommand {
+        +<b>add</b>(Command)
+        +<b>addCommands</b>(Command[])
+        +<b>execute</b>(Input, Output)
+    }
+
+    MacroCommand ..|> Command
+    MacroCommand o-left-> "1..n" Command: commands
+    note as MacroCommandNote
+    execute(Input $input, Output $output) {
+        foreach ($this->commands as $command) {
+            $command->execute($input, $output);
+        }
+    }
+    end note
+    MacroCommand .. MacroCommandNote
+
+    Controller --> CommandProcessor
+    class CommandProcessor {
+        -Dispatcher <b>dispatcher</b>
+        -Input <b>input</b>
+        -Output <b>output</b>
+        +<b>executeCommand</b>(Command)
+    }
+    CommandProcessor --> Command
+    note as CommandProcessorNote
+        executeCommand(Command $command) {
+            if ($this->dispatcher->trigger('beforeExecute', $command)) {
+                $command->setDispatcher($this->dispatcher);
+                $command->execute($this->input, $this->output);
+                $this->dispatcher->trigger('afterExecute', $command);
+            }
+        }
+    end note
+    CommandProcessor .right. CommandProcessorNote
+}
+@enduml
