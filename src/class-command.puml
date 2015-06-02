@@ -6,6 +6,8 @@ namespace Joomla.Command {
         -Dispatcher <b>dispatcher</b>
         -Input <b>input</b>
         -Output <b>output</b>
+        #{abstract} <b>add</b>(Command)
+        #{abstract} <b>addCommands</b>(Command[])
         +{abstract} <b>run</b>()
     }
     note as ControllerNote
@@ -36,6 +38,8 @@ namespace Joomla.Command {
     Command -right-> Dispatcher: dispatcher
 
     class MacroCommand {
+        +<b>add</b>(Command)
+        +<b>addCommands</b>(Command[])
         +<b>execute</b>(Input, Output)
     }
 
@@ -68,12 +72,7 @@ namespace Joomla.Command {
     end note
     CommandProcessor .right. CommandProcessorNote
 
-    class CommandCollectionDefaultImplementation {
-        #<b>add</b>(Command)
-        #<b>addCommands</b>(Command[])
-    }
-    CommandCollectionDefaultImplementation o-r-> "1..n" Command: commands
-    MacroCommand *--> CommandCollectionDefaultImplementation
-    Controller *--> CommandCollectionDefaultImplementation
+    MacroCommand o--> "1..n" Command: commands
+    Controller o--> "1..n" Command: commands
 }
 @enduml
