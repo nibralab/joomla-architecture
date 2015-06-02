@@ -45,8 +45,8 @@ namespace Joomla.Command {
         +<b>execute</b>(Input, Output)
     }
 
-    MacroCommand ..|> Command
-    MacroCommand o-left-> "1..n" Command: commands
+    class MacroCommand implements Command
+    MacroCommand o--> "1..n" Command: commands
     note as MacroCommandNote
     execute(Input $input, Output $output) {
         foreach ($this->commands as $command) {
