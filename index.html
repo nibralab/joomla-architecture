@@ -1,57 +1,19 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Joomla Architecture by nibralab</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+---
+layout: default
+title: About this Project
+category: Meta
+author: Niels Braczek
+author_email: nbraczek@bsds.de
+---
 
-  </head>
-  <body>
+<p>The <strong>Hypermedia API</strong> was a "Make it happen" session on J and Beyond 2015 in Prague, lead by Chris
+    Davenport.
+    The basic idea is to create an interface, that is totally agnostic about the channel, which is used for
+    communication. That way, the normal web, REST, SOAP, ..., and even the command line can be served by the very same
+    code behind a "channel independency border".</p>
 
-      <header>
-        <h1>Joomla Architecture</h1>
-        <p>This is a pool of ideas for the architecture of Joomla! 4</p>
-      </header>
+<p>Brainstorming on that idea showed, that it will not be sufficient to build new frontends. A lot of internal stuff has
+    to be abstracted from the channels.</p>
 
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/nibralab/joomla-architecture" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/nibralab/joomla-architecture/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/nibralab/joomla-architecture/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        <p>The <strong>Hypermedia API</strong> was a "Make it happen" session on J and Beyond 2015 in Prague, lead by Chris Davenport.
-The basic idea is to create an interface, that is totally agnostic about the channel, which is used for communication. That way, the normal web, REST, SOAP, ..., and even the command line can be served by the very same code behind a "channel independency border".</p>
-
-<p>Brainstorming on that idea showed, that it will not be sufficient to build new frontends. A lot of internal stuff has to be abstracted from the channels.</p>
-
-<p>That's why this project's scope is much wider than just the Hypermedia API. It will cover the future architecture of Joomla! as a whole.</p>
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/nibralab">nibralab</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
-</html>
+<p>That's why this project's scope is much wider than just the Hypermedia API. It will cover the future architecture of
+    Joomla! as a whole.</p>
