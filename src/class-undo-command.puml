@@ -3,7 +3,7 @@ title Undo / Redo Commands
 interface Command {
     -string <b>name</b>
     -string <b>description</b>
-    +<b>execute</b>(Input, Output)
+    +{abstract} <b>execute</b>(Input, Output)
 }
 class UndoCommand implements Command
 note as UndoCommandNote

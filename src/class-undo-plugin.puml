@@ -1,8 +1,8 @@
 @startuml
 title Undo Plugin
 interface CommandPlugin implements Plugin {
-    +bool <b>onBeforeExecute</b>(Command)
-    +<b>onAfterExecute</b>(Command)
+    +{abstract} bool <b>onBeforeExecute</b>(Command)
+    +{abstract} <b>onAfterExecute</b>(Command)
 }
 class UndoPlugin implements CommandPlugin {
     -RecoverableCommand[] <b>undoStack</b>
