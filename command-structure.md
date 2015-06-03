@@ -14,4 +14,4 @@ Each command implements a single task, that can be addressed from arbitrary chan
 A generic **Controller** will gather the available commands for a given domain (usually a component),
 identify the requested command, and execute it.
 
-![UML Class Diagram](https://github.com/nibralab/joomla-architecture/blob/master/svg/class-command.svg)
+![UML Class Diagram](svg/class-command.svg)
