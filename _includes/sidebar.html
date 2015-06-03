@@ -3,7 +3,7 @@
     <ul>
 
         {% for category in site.categories %}
-        <li class="topic-header"><b>{{ category | first }}</b></li>
+        <li class="topic-header"><b>{{ category }}</b></li>
         {% for post in category.last %}
         <li>
             <ul class='subnavlist'>
