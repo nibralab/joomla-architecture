@@ -3,7 +3,7 @@
     <script>
         $(document).ready(function () {
             var categories = {};
-            {% for post in site.posts %}categories.{{ post.category }}."{{ post.id }}" = {
+            {% for post in site.posts %}categories.{{ post.category }}["{{ post.id }}"] = {
                 category: "{{ post.category }}",
                 url: "{{ post.url }}",
                 title: "{{ post.title }}"
