@@ -1,5 +1,10 @@
 <nav>
     <h2>Topics</h2>
+    <script>
+        var categories = {};
+        {% for post in site.posts %}categories.{{ post.category }} = {{ post }};
+        {% endfor %}
+    </script>
     <ul class="topics">{% for cat in site.category-list %}
         <h3>{{ cat }}</h3>
         <ul>{% for post in site.posts %}{% if post.category == cat %}
