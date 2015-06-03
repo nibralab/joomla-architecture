@@ -1,20 +1,12 @@
 <nav>
     <script type="application/javascript">
-        var categories = {{ site.categories }};
+        var categories = {};
+        {% for category in site.categories %} categories."{{ category | first }}" = "{{ category.last }}"
+            {% endfor %}
     </script>
     <h2>Topics</h2>
-    <ul class="topics">
+    <ul id="nav" class="topics">
 
-        {% for category in site.categories %}
-        <li class="topic-header"><b>{{ category | first }}</b></li>
-        {% for post in category.last %}
-        <li>
-            <ul class='subnavlist'>
-                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-            </ul>
-        </li>
-        {% endfor %}
-        {% endfor %}
 
     </ul>
 </nav>
