@@ -1,4 +1,12 @@
-# About this Project
+---
+layout: default
+title: About the Project
+category: About
+author: Niels Braczek
+author_email: nbraczek@bsds.de
+---
+
+## About this Project
 
 The **Hypermedia API** was a "Make it happen" session on J and Beyond 2015 in Prague, lead by Chris Davenport.
 The basic idea is to create an interface, that is totally agnostic about the channel, which is used for communication.

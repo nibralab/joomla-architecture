@@ -12,44 +12,26 @@
         </div>
 
         <header>
-            <div class="wrapper">
-                <img src="https://avatars1.githubusercontent.com/u/12716156?v=3&s=200" alt="nibralab" style="float: left;"/>
+            <img src="https://avatars1.githubusercontent.com/u/12716156?v=3&s=200" alt="nibralab"/>
 
-                <h1>Joomla Architecture</h1>
+            <h1>Joomla Architecture</h1>
 
-                <p>This is a pool of ideas for the architecture of Joomla! 4</p>
-            </div>
+            <p>This is a pool of ideas for the architecture of Joomla! 4</p>
         </header>
 
-        <div id="banner">
-            <span id="logo"></span>
-
-            <a href="https://github.com/nibralab/joomla-architecture" class="button fork"><strong>View On
-                GitHub</strong></a>
-
-        </div>
-
-        <div class="wrapper">
+        <aside>
             {% include sidebar.html %}
-            <section>
-                <aside>
-                    <nav class="toc">
-                        <ul></ul>
-                    </nav>
-                </aside>
-                {{ content }}
-            </section>
-            <footer>
-                <p>Project maintained by <a href="https://github.com/nibralab">nibralab</a></p>
+        </aside>
 
-                <p>
-                    <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a>
-                    </small>
-                </p>
-            </footer>
-        </div>
-        <!--[if !IE]>
-        <script>fixScale(document);</script><![endif]-->
+        <section>
+            {{ content }}
+        </section>
+
+        <footer>
+            <p>Project maintained by <a href="https://github.com/nibralab">nibralab</a></p>
+
+            <p><small>Hosted on GitHub Pages</small></p>
+        </footer>
 
     </body>
 </html>
