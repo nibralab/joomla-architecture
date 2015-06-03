@@ -1,3 +1,2 @@
 exclude:
   - README.md
-category-list: [controller, model, view, frontend]
