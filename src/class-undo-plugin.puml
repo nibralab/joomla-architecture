@@ -1,4 +1,6 @@
 @startuml
+!include skin.puml
+
 title Undo Plugin
 interface CommandPlugin implements Plugin {
     +{abstract} bool <b>onBeforeExecute</b>(Command)

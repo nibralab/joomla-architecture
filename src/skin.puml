@@ -1,0 +1,144 @@
+skinparam shadowing false
+
+skinparam class {
+	BorderColor Black
+	BackgroundColor White
+	FontName Verdana
+	FontSize 12
+    FontColor Black
+
+    ArrowColor Black
+    ArrowFontName Verdana
+	ArrowFontSize 12
+    ArrowFontColor Black
+}
+
+skinparam stereotype {
+	ABorderColor Black
+    ABackgroundColor White
+
+	CBorderColor Black
+    CBackgroundColor White
+
+	IBorderColor Black
+    IBackgroundColor White
+}
+
+skinparam sequence {
+	BorderColor Black
+	BackgroundColor White
+	FontName Verdana
+	FontSize 12
+    FontColor Black
+
+    ArrowColor Black
+    ArrowFontName Verdana
+	ArrowFontSize 12
+    ArrowFontColor Black
+
+	LifeLineBorderColor Black
+	LifeLineBackgroundColor White
+
+	ParticipantBorderColor Black
+	ParticipantBackgroundColor White
+	ParticipantFontName Verdana
+	ParticipantFontSize 12
+	ParticipantFontColor Black
+
+	ActorBorderColor Black
+	ActorBackgroundColor White
+	ActorFontColor Black
+	ActorFontName Verdana
+	ActorFontSize 12
+}
+
+skinparam usecase {
+	BorderColor Black
+	BackgroundColor White
+	FontName Verdana
+	FontSize 12
+    FontColor Black
+
+    ArrowColor Black
+    ArrowFontName Verdana
+	ArrowFontSize 12
+    ArrowFontColor Black
+
+	ActorBorderColor Black
+	ActorBackgroundColor White
+	ActorFontColor Black
+	ActorFontName Verdana
+	ActorFontSize 12
+}
+
+skinparam activity {
+	BorderColor Black
+	BackgroundColor White
+	FontName Verdana
+	FontSize 12
+    FontColor Black
+
+    ArrowColor Black
+    ArrowFontName Verdana
+	ArrowFontSize 12
+    ArrowFontColor Black
+
+    StartColor Black
+    BarColor Black
+    EndColor Black
+}
+
+skinparam state {
+	BorderColor Black
+	BackgroundColor White
+	FontName Verdana
+	FontSize 12
+    FontColor Black
+
+    StartColor Black
+    BarColor Black
+    EndColor Black
+}
+
+skinparam component {
+    Style uml2
+	BorderColor Black
+	BackgroundColor White
+	FontName Verdana
+	FontSize 12
+    FontColor Black
+
+    ArrowColor Black
+    ArrowFontName Verdana
+	ArrowFontSize 12
+    ArrowFontColor Black
+
+	InterfaceBorderColor Black
+	InterfaceBackgroundColor White
+}
+
+skinparam node {
+    Style uml2
+    BorderColor Black
+    BackgroundColor White
+    FontName Verdana
+    FontSize 12
+    FontColor Black
+}
+
+skinparam database {
+    Style uml2
+    BorderColor Black
+    BackgroundColor White
+    FontName Verdana
+    FontSize 12
+    FontColor Black
+}
+
+skinparam note {
+	BorderColor Black
+	BackgroundColor #lightyellow
+	FontName Verdana
+	FontSize 12
+    FontColor Black
+}

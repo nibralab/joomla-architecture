@@ -1,4 +1,6 @@
 @startuml
+!include skin.puml
+
 title Undo / Redo Commands
 interface Command {
     -string <b>name</b>

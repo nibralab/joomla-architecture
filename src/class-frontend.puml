@@ -1,4 +1,6 @@
 @startuml
+!include skin.puml
+
 title Frontends
 namespace Joomla.Frontend.HTTP {
     class Request implements Joomla.Frontend.Input
