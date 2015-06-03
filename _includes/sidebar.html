@@ -3,14 +3,15 @@
     <ul>
 
         {% for category in site.categories %}
-        <li class="topic-header"><b>{{ category }}</b></li>
-        {% for post in category.last %}
+        <li class="topic-header"><b>{{ category | first }}</b></li>
+        {{ category.first }}
+        <!--{% for post in category.last %}
         <li>
             <ul class='subnavlist'>
                 <li class='recipe'><a href="{{ post.url }}">{{ post.title }}</a></li>
             </ul>
         </li>
-        {% endfor %}
+        {% endfor %}-->
         {% endfor %}
 
     </ul>
