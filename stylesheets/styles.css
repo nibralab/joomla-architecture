@@ -364,7 +364,7 @@ fieldset {
 
 /*
  * 1. Corrects color not being inherited in IE6/7/8/9
- * 2. Corrects text not wrapping in FF3 
+ * 2. Corrects text not wrapping in FF3
  * 3. Corrects alignment displayed oddly in IE6/7
  */
 legend {
@@ -815,7 +815,16 @@ small {
   font-size: 12px;
 }
 
-nav {
+aside {
+    width: 230px;
+    position: fixed;
+    top: 220px;
+    left: 50%;
+    margin-left: 580px;
+    text-align: left;
+}
+
+nav.toc {
   width: 230px;
   position: fixed;
   top: 220px;
@@ -833,14 +842,14 @@ nav ul li {
   padding: 5px 0px;
   line-height: 16px;
 }
-nav ul li.tag-h1 {
+nav.toc > ul > li.tag-h1 {
   font-size: 1.2em;
 }
-nav ul li.tag-h1 a {
+nav.toc > ul > li.tag-h1 > a {
   font-weight: bold;
   color: #333;
 }
-nav ul li.tag-h2 + .tag-h1 {
+nav.toc > ul > li.tag-h2 + .tag-h1 {
   margin-top: 10px;
 }
 nav ul a {
