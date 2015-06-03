@@ -2,7 +2,7 @@
     <h2>Topics</h2>
     <ul>
 
-        {% for category in site.sorted_categories %}
+        {% for category in site.categories %}
         <li class="topic-header"><b>{{ category | first }}</b></li>
         {% for post in category.last %}
         <li>
