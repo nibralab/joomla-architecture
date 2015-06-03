@@ -21,8 +21,9 @@ When the **Controller** is instantiated, it creates the **Command** objects for 
 When it is asked to run, it creates a **CommandProcessor**, which will handle the execution of the command.
 Just before the command is executed, the processor triggers the `beforeExecute` event.
 
-On the **onBeforeExecute** event, an ACL plugin could check, whether or not the current user is permitted to execute the command.
-A component does not contain ACL specific code. However, *any* component is covered by the ACL plugin.
+On the `beforeExecute` event, an ACL plugin could check, whether or not the current user is permitted to execute the command.
+The **Command** and the component, it belongs to, can (and should) be completely ACL agnostic.
+However, the **Command** is covered by the ACL plugin due to the **CommandProcessor**, as any other command is.
 
 Since the **Command** knows everything it need to execute, an arbitrary class can be used as a model.
 There is no limitation.
