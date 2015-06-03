@@ -4,34 +4,28 @@
         {% include head.html %}
     </head>
 
-    <body>
+    <body style="margin:0;">
 
         <div style="position: absolute; top: 0; right: 0; border: 0; z-index: 100;">
             <a href="https://github.com/nibralab/joomla-architecture"><img width="149" height="149"
                 src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
         </div>
 
-        <header>
-            <img src="https://avatars1.githubusercontent.com/u/12716156?v=3&s=200" alt="nibralab"/>
+        <header style="background-color:#5d94eb;color:#fff;padding:1em;">
+            <img src="https://avatars1.githubusercontent.com/u/12716156?v=3&s=200" alt="nibralab" style="float:left;"/>
 
             <h1>Joomla Architecture</h1>
 
             <p>This is a pool of ideas for the architecture of Joomla! 4</p>
         </header>
 
-        <aside>
+        <aside style="float:right;max-width:30%;padding:1em;">
             {% include sidebar.html %}
         </aside>
 
-        <section>
+        <section style="clear:left;padding:1em;">
             {{ content }}
         </section>
-
-        <footer>
-            <p>Project maintained by <a href="https://github.com/nibralab">nibralab</a></p>
-
-            <p><small>Hosted on GitHub Pages</small></p>
-        </footer>
 
     </body>
 </html>
