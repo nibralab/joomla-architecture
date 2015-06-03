@@ -815,7 +815,16 @@ small {
   font-size: 12px;
 }
 
-aside {
+nav {
+  width: 230px;
+  position: fixed;
+  top: 220px;
+  left: 50%;
+  margin-left: -580px;
+  text-align: right;
+}
+
+nav.toc {
     width: 230px;
     position: fixed;
     top: 220px;
@@ -824,14 +833,6 @@ aside {
     text-align: left;
 }
 
-nav.toc {
-  width: 230px;
-  position: fixed;
-  top: 220px;
-  left: 50%;
-  margin-left: -580px;
-  text-align: right;
-}
 nav ul {
   list-style: none;
   list-style-image: none;
@@ -842,14 +843,14 @@ nav ul li {
   padding: 5px 0px;
   line-height: 16px;
 }
-nav.toc > ul > li.tag-h1 {
+nav ul li.tag-h1 {
   font-size: 1.2em;
 }
-nav.toc > ul > li.tag-h1 > a {
+nav ul li.tag-h1 a {
   font-weight: bold;
   color: #333;
 }
-nav.toc > ul > li.tag-h2 + .tag-h1 {
+nav ul li.tag-h2 + .tag-h1 {
   margin-top: 10px;
 }
 nav ul a {
