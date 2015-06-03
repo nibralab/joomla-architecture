@@ -1,12 +1,6 @@
 <nav>
     <script type="application/javascript">
-        var categories = {};
-        {% for category in site.categories %} categories.{{ category | first }} = {
-            {% for post in category.last %}"{{ post.title }}": {{ post }},
-            {% endfor %}
-                "-": "ignore"
-        };
-        {% endfor %}
+        var pages = "{{ site.pages }}";
     </script>
     <h2>Topics</h2>
     <ul id="nav" class="topics">
