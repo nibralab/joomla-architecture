@@ -1,6 +1,9 @@
 <nav>
+    <script type="application/javascript">
+        var categories = {{ site.categories }};
+    </script>
     <h2>Topics</h2>
-    <ul>
+    <ul class="topics">
 
         {% for category in site.categories %}
         <li class="topic-header"><b>{{ category | first }}</b></li>
