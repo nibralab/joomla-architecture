@@ -1,10 +1,15 @@
 <nav>
-    <script type="application/javascript">
-        var pages = "{{ site.pages }}";
-    </script>
     <h2>Topics</h2>
-    <ul id="nav" class="topics">
-
-
+    <ul class="topics">
+        {% for cat in site.category-list %}
+        <h3>{{ cat }}</h3>
+        <ul>
+            {% for post in site.posts %}
+            {% if post.category == cat %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endif %}   <!-- cat-match-p -->
+            {% endfor %}  <!-- post -->
+        </ul>
+        {% endfor %}  <!-- cat -->
     </ul>
 </nav>
