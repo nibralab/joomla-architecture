@@ -2,7 +2,10 @@
     <h2>Topics</h2>
     <script>
         var categories = {};
-        {% for post in site.posts %}categories.{{ post.category }} = {{ post }};
+        {% for post in site.posts %}categories.{{ post.category }}."{{ post.id }}" = {
+            url: {{ post.url }},
+            title: {{ post.title }}
+        };
         {% endfor %}
     </script>
     <ul class="topics">{% for cat in site.category-list %}
