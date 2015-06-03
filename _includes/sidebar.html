@@ -1,15 +1,9 @@
-<nav>
+<div>
     <h2>Topics</h2>
-    <ul class="topics">
-        {% for cat in site.category-list %}
+    <ul class="topics">{% for cat in site.category-list %}
         <h3>{{ cat }}</h3>
-        <ul>
-            {% for p in site.posts %}
-            {% if p.category == cat %}
-            <li><a href="{{ p.url }}">{{ p.title }}</a></li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-        {% endfor %}
+        <ul>{% for post in site.posts %}{% if post.category == cat %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>{% endif %}{% endfor %}
+        </ul>{% endfor %}
     </ul>
-</nav>
+</div>
