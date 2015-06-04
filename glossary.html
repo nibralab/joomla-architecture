@@ -9,6 +9,9 @@ author_email: nbraczek@bsds.de
 <h2 id="glossary">Glossary</h2>
 
 <dl>
+    <dt><h3 id="channel">Channel</h3></dt>
+    <dd>A communication <strong>Channel</strong>, like web (HTTP), REST, command line interface (CLI).</dd>
+
     <dt><h3 id="command">Command</h3></dt>
     <dd><p><strong>Command</strong>s are going to replace the controllers of Joomla! &lt; 4.0.
         Each <strong>Command</strong> implements a single task, that can be addressed from arbitrary channels.</p>
@@ -29,6 +32,13 @@ author_email: nbraczek@bsds.de
     <dd>The <strong>Controller</strong> determines, which command has to be run, and executes it through a <strong>CommandProcessor</strong>.
     </dd>
 
+    <dt><h3 id="entrypoint">EntryPoint</h3></dt>
+    <dd>A script, that is called on the start of each request. For HTTP, it is `index.php`, for REST it is `api.php`,
+    and for CLI it is `joomla.php`.</dd>
+
+    <dt><h3 id="frontend">Frontend</h3></dt>
+    <dd>The <strong>Channel</strong> dependent layer.</dd>
+
     <dt><h3 id="input">Input</h3></dt>
     <dd>The <strong>Input</strong> object is a channel independent encapsulation of the input data.</dd>
 
@@ -43,5 +53,14 @@ author_email: nbraczek@bsds.de
 
     <dt><h3 id="recoverablecommand">RecoverableCommand</h3></dt>
     <dd>A <strong>Command</strong>, that can be undone.</dd>
+
+    <dt><h3 id="renderer">Renderer</h3></dt>
+    <dd>A <strong>Renderer</strong> transforms the output in a specific way.</dd>
+
+    <dt><h3 id="request">Request</h3></dt>
+    <dd>An <strong>Input</strong> object. It's merely an alias to reflect the domain language.</dd>
+
+    <dt><h3 id="response">Response</h3></dt>
+    <dd>An <strong>Output</strong> object. It's merely an alias to reflect the domain language.</dd>
 
 </dl>
