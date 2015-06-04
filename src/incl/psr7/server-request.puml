@@ -1,0 +1,27 @@
+@startuml
+namespace Psr.Http.Message {
+    interface ServerRequestInterface extends RequestInterface {
+        __
+        +{abstract} array <b>getServerParams</b>()
+        --
+        +{abstract} array <b>getCookieParams</b>()
+        +{abstract} ServerRequestInterface <b>withCookieParams</b>(array)
+        --
+        +{abstract} array <b>getQueryParams</b>()
+        +{abstract} ServerRequestInterface <b>withQueryParams</b>(array)
+        --
+        +{abstract} array <b>getUploadedFiles</b>()
+        +{abstract} ServerRequestInterface <b>withUploadedFiles</b>(array)
+        --
+        +{abstract} mixed <b>getParsedBody</b>()
+        +{abstract} ServerRequestInterface <b>withParsedBody</b>(mixed)
+        --
+        +{abstract} array <b>getAttributes</b>()
+        +{abstract} mixed <b>getAttribute</b>(string [, mixed])
+        --
+        +{abstract} ServerRequestInterface <b>withAttribute</b>(string, mixed)
+        +{abstract} ServerRequestInterface <b>withoutAttribute</b>(string)
+    }
+}
+
+@enduml

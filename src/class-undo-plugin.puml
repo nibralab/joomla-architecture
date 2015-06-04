@@ -1,5 +1,5 @@
 @startuml
-!include skin.puml
+!include incl/skin.puml
 
 title Undo Plugin
 interface CommandPlugin implements Plugin {

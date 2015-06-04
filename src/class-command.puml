@@ -1,5 +1,5 @@
 @startuml
-!include skin.puml
+!include incl/skin.puml
 
 title Command Structure
 namespace Joomla.Command {

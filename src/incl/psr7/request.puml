@@ -1,0 +1,15 @@
+@startuml
+namespace Psr.Http.Message {
+    interface RequestInterface extends MessageInterface {
+        __
+        +{abstract} string <b>getRequestTarget</b>()
+        +{abstract} RequestInterface <b>withRequestTarget</b>(mixed)
+        --
+        +{abstract} string <b>getMethod</b>()
+        +{abstract} RequestInterface <b>withMethod</b>(string)
+        --
+        +{abstract} UriInterface <b>getUri</b>()
+        +{abstract} RequestInterface <b>withUri</b>(UriInterface [, bool]);
+    }
+}
+@enduml

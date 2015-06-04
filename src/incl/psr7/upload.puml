@@ -1,0 +1,12 @@
+@startuml
+namespace Psr.Http.Message {
+    interface UploadedFileInterface {
+        +{abstract} StreamInterface <b>getStream</b>()
+        +{abstract} <b>moveTo</b>(string)
+        +{abstract} int|null <b>getSize</b>()
+        +{abstract} int <b>getError</b>()
+        +{abstract} string|null <b>getClientFilename</b>()
+        +{abstract} string|null <b>getClientMediaType</b>()
+    }
+}
+@enduml

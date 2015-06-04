@@ -1,0 +1,28 @@
+@startuml
+namespace Psr.Http.Message {
+    interface StreamInterface {
+        __
+        +{abstract} string <b>__toString</b>()
+        --
+        +{abstract} <b>close</b>()
+        +{abstract} resource|null <b>detach</b>()
+        --
+        +{abstract} int|null <b>getSize</b>()
+        +{abstract} int <b>tell</b>()
+        +{abstract} bool <b>eof</b>()
+        --
+        +{abstract} bool <b>isSeekable</b>()
+        +{abstract} <b>seek</b>(int [, int])
+        +{abstract} <b>rewind</b>()
+        --
+        +{abstract} bool <b>isWritable</b>()
+        +{abstract} int <b>write</b>($string)
+        --
+        +{abstract} bool <b>isReadable</b>()
+        +{abstract} string <b>read</b>(int)
+        +{abstract} string <b>getContents</b>()
+        --
+        +{abstract} mixed <b>getMetadata</b>([string])
+    }
+}
+@enduml

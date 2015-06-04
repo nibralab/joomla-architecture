@@ -1,0 +1,9 @@
+@startuml
+namespace Psr.Http.Message {
+    interface ResponseInterface extends MessageInterface {
+        +{abstract} int <b>getStatusCode</b>()
+        +{abstract} ResponseInterface <b>withStatus</b>(int [, string])
+        +{abstract} string <b>getReasonPhrase</b>()
+    }
+}
+@enduml

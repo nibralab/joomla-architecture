@@ -1,0 +1,14 @@
+@startuml
+!include psr7/message.puml
+!include psr7/request.puml
+!include psr7/response.puml
+!include psr7/server-request.puml
+!include psr7/stream.puml
+!include psr7/upload.puml
+!include psr7/uri.puml
+
+Psr.Http.Message.MessageInterface -r-> Psr.Http.Message.StreamInterface: "«uses»"
+Psr.Http.Message.ServerRequestInterface -r-> Psr.Http.Message.UploadedFileInterface: "«uses»"
+Psr.Http.Message.UploadedFileInterface --> Psr.Http.Message.StreamInterface: "«uses»"
+Psr.Http.Message.RequestInterface -l-> Psr.Http.Message.UriInterface: "«uses»"
+@enduml

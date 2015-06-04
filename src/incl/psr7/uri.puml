@@ -1,0 +1,25 @@
+@startuml
+namespace Psr.Http.Message {
+    interface UriInterface {
+        __
+        +{abstract} string <b>getScheme</b>()
+        +{abstract} string <b>getAuthority</b>()
+        +{abstract} string <b>getUserInfo</b>()
+        +{abstract} string <b>getHost</b>()
+        +{abstract} null|int <b>getPort</b>()
+        +{abstract} string <b>getPath</b>()
+        +{abstract} string <b>getQuery</b>()
+        +{abstract} string <b>getFragment</b>()
+        --
+        +{abstract} UriInterface <b>withScheme</b>(string)
+        +{abstract} UriInterface <b>withUserInfo</b>(string [, string])
+        +{abstract} UriInterface <b>withHost</b>(string)
+        +{abstract} UriInterface <b>withPort</b>(int)
+        +{abstract} UriInterface <b>withPath</b>(string)
+        +{abstract} UriInterface <b>withQuery</b>(string)
+        +{abstract} UriInterface <b>withFragment</b>(string)
+        --
+        +{abstract} string <b>__toString</b>()
+    }
+}
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+namespace Psr.Http.Message {
+    interface MessageInterface {
+        __
+        +{abstract} string <b>getProtocolVersion</b>()
+        +{abstract} MessageInterface <b>withProtocolVersion</b>(string)
+        --
+        +{abstract} array <b>getHeaders</b>()
+        +{abstract} bool <b>hasHeader</b>(string)
+        +{abstract} array <b>getHeader</b>(string)
+        +{abstract} string <b>getHeaderLine</b>(string)
+        +{abstract} MessageInterface <b>withHeader</b>(string, string|string[])
+        +{abstract} MessageInterface <b>withAddedHeader</b>(string, string|string[])
+        +{abstract} MessageInterface <b>withoutHeader</b>(string)
+        --
+        +{abstract} StreamInterface <b>getBody</b>()
+        +{abstract} MessageInterface <b>withBody</b>(StreamInterface);
+    }
+}
+@enduml
