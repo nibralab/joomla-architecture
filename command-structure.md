@@ -28,6 +28,7 @@ However, the **Command** is covered by the ACL plugin due to the **CommandProces
 Since the **Command** knows everything it need to execute, an arbitrary class can be used as a model.
 There is no limitation.
 For example, JImage functions could get accessible directly using commands.
+For **Model**s with a well defined common interface, generic **Command**s can be used.
 
 The **Command** gets its data from the **Input** object.
 It may or may not trigger its own events and call arbitrary library methods, which in turn may trigger standardized events.
