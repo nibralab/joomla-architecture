@@ -1,0 +1,28 @@
+@startuml
+!include incl/skin.puml
+
+title Content Structure
+
+namespace Joomla.Content {
+    interface Content {
+        +{abstract} <b>accept</b>(Renderer)
+    }
+    interface ContentItem extends Content
+    interface ContentGroup extends Content
+    ContentGroup *-> "n" Content: children
+
+    class Category implements ContentGroup
+    class Page implements ContentGroup
+
+    class Paragraph implements ContentItem
+    class Image implements ContentItem
+}
+
+namespace Joomla.Frontend {
+    interface Renderer {
+        +{abstract} <b>visit</b>(Content)
+    }
+}
+
+Joomla.Content.Content <-> Joomla.Frontend.Renderer: "«uses»"
+@enduml
