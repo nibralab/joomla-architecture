@@ -37,6 +37,6 @@ It echoes or stores the resulting data, depending on default configuration or co
 
 ### Rendering
 
-On the output side, the **Content** is collected by a **Renderer** using the Visitor pattern.
+On the output side, the **Content** is transformed to the output format by a **Renderer** using the Visitor pattern.
 
 ![UML Class Diagram](svg/class-renderer.svg)
