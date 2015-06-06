@@ -8,33 +8,43 @@ namespace Joomla.Content {
 }
 
 namespace Joomla.Frontend {
-    interface Renderer {
-        +{abstract} <b>visit</b>(Content)
-    }
+    interface Renderer
 }
 
-namespace Joomla.Frontend.HTTP {
+Joomla.Content.Content <-> Joomla.Frontend.Renderer: "«uses»"
+
+namespace Joomla.Frontend.Http {
     interface Renderer .r.|> Joomla.Frontend.Renderer
 
-    class HTMLRenderer implements Renderer {
-        #ClientScriptStragtegy <b>script</b>
+    class HtmlRenderer implements Renderer {
+        -ScriptStrategy <b>clientScript</b>
+        +<b>setScriptStrategy</b>(ScriptStrategy)
     }
 
     class PdfRenderer implements Renderer
     class DocBookRenderer implements Renderer
 }
 
-namespace Joomla.Frontend.REST {
+namespace Joomla.Frontend.Rest {
     interface Renderer .l.|> Joomla.Frontend.Renderer
 
     class XmlRenderer implements Renderer
     class JsonRenderer implements Renderer
 }
 
-namespace Joomla.Frontend.CLI {
+namespace Joomla.Frontend.Cli {
     class Renderer .u.|> Joomla.Frontend.Renderer
     class AnsiRenderer extends Renderer
 }
 
-Joomla.Content.Content <-> Joomla.Frontend.Renderer: "«uses»"
+namespace Joomla.Frontend {
+    class DynamicRendererImplementation << (T,white) >> {
+        -Callable[] <b>handlers</b>
+        +<b>registerContentType</b>(string, Callable)
+        +<b>__call</b>(string [, ...])
+    }
+}
+
+Joomla.Frontend.Renderer *-> Joomla.Frontend.DynamicRendererImplementation
+
 @enduml

@@ -2,19 +2,19 @@
 !include incl/skin.puml
 
 title Frontends
-namespace Joomla.Frontend.HTTP {
+namespace Joomla.Frontend.Http {
     class Request implements Joomla.Frontend.Input
     class Response implements Joomla.Frontend.Output
-    note "index.php" as FrontControllerHTTP #white
+    note "index.php" as FrontControllerHttp #white
 }
-namespace Joomla.Frontend.REST {
+namespace Joomla.Frontend.Rest {
     class Request implements Joomla.Frontend.Input
     class Response implements Joomla.Frontend.Output
-    note "api.php" as FrontControllerREST #white
+    note "api.php" as FrontControllerRest #white
 }
-namespace Joomla.Frontend.CLI {
+namespace Joomla.Frontend.Cli {
     class Input implements Joomla.Frontend.Input
     class Output implements Joomla.Frontend.Output
-    note "joomla.php" as FrontControllerCLI #white
+    note "joomla.php" as FrontControllerCli #white
 }
 @enduml
