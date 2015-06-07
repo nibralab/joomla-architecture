@@ -1,6 +1,6 @@
 <?php
 namespace Joomla\Frontend\Http;
 
-class PdfRenderer implements Renderer
+class PdfRenderer extends Renderer
 {
 }

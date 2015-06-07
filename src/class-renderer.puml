@@ -8,13 +8,13 @@ namespace Joomla.Content {
 }
 
 namespace Joomla.Frontend {
-    interface Renderer
+    abstract class Renderer
 }
 
 Joomla.Content.Content <-> Joomla.Frontend.Renderer: "«uses»"
 
 namespace Joomla.Frontend.Http {
-    interface Renderer .r.|> Joomla.Frontend.Renderer
+    abstract class Renderer .r.|> Joomla.Frontend.Renderer
 
     class HtmlRenderer implements Renderer {
         -ScriptStrategy <b>clientScript</b>
@@ -26,7 +26,7 @@ namespace Joomla.Frontend.Http {
 }
 
 namespace Joomla.Frontend.Rest {
-    interface Renderer .l.|> Joomla.Frontend.Renderer
+    abstract class Renderer .l.|> Joomla.Frontend.Renderer
 
     class XmlRenderer implements Renderer
     class JsonRenderer implements Renderer

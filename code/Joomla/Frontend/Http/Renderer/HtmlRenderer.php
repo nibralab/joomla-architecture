@@ -3,7 +3,7 @@ namespace Joomla\Frontend\Http;
 
 use Joomla\Frontend\Http\Client\ScriptStrategy;
 
-class HtmlRenderer implements Renderer
+class HtmlRenderer extends Renderer
 {
 	/** @var  ScriptStrategy */
 	private $clientScript;

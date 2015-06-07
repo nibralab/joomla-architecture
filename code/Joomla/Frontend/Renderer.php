@@ -1,6 +1,6 @@
 <?php
 namespace Joomla\Frontend;
 
-interface Renderer
+abstract class Renderer
 {
 }
