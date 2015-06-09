@@ -12,7 +12,7 @@ For many operations, an ID is needed. These IDs usually are numbers, and thus ha
 Therefore, whenever a data record has a unique alias (like `user_id` - `user_name`), the alias can be used instead of
 the numeric ID.
  
-The table below show some use cases over different channels.
+The table below shows some use cases over different channels.
 The **Web** column shows the requests from current Joomla 3.4.1
 
 
@@ -134,10 +134,20 @@ c1c=1
     </tr>
 </table>    
 
-### Conclusions
+### Routing
 
-The **REST** and **Web** requests should only differ in the `Accept` header field (and the `Content-Type`) to make routing much more handy.
+For most of the requests, the **REST** and **Web** requests should only differ in the `Accept` header field
+(and the `Content-Type`) to make routing much more handy.
+For search engine optimizations (SEO), articles can contain their own routing information in the `alias` field.
+If an `alias` starts with a slash, it is used un-prefixed.
+Otherwise, the category `alias` is set in front of it recursively, until a category has a leading slash or is a root category.
+The site owner is responsible for avoiding conflicts. 
+
+### Redirection
+
 Any redirection, which currently is initiated by the server, should be handled on the client's side.
 Since the response contains all relevant links, it should be easy for the client to redirect itself to the right page.
+
+### Input Definitions
 
 In all cases, the input definition comes from the model's form description, so it should be possible to generate them automatically.
