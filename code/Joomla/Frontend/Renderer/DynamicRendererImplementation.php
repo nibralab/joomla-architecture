@@ -1,5 +1,5 @@
 <?php
-namespace Joomla\Frontend;
+namespace Joomla\Frontend\Renderer;
 
 trait DynamicRendererImplementation
 {

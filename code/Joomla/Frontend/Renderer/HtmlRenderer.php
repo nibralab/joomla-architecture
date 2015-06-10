@@ -1,6 +1,7 @@
 <?php
-namespace Joomla\Frontend\Http;
+namespace Joomla\Frontend\Renderer;
 
+use Joomla\Frontend\Renderer;
 use Joomla\Frontend\Http\Client\ScriptStrategy;
 
 class HtmlRenderer extends Renderer
