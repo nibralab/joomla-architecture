@@ -3,6 +3,8 @@
 include '../code/Joomla/Frontend/Renderer.php';
 include '../code/Joomla/Frontend/Renderer/Factory.php';
 include '../code/Joomla/Frontend/Renderer/NotFoundException.php';
+include '../code/Joomla/Utilities/QualifiedHeader.php';
+include '../code/Joomla/Utilities/AcceptHeader.php';
 
 $factory = new \Joomla\Frontend\Renderer\Factory();
 
@@ -11,7 +13,8 @@ $acceptHeaders = array(
 	'Accept: audio/*; q=0.2, audio/basic',
 	'text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c',
 	'application/xml',
-	'application/xml;q=0.8, application/json',
+	'application/xml;q=0.8, application/json; q=0.9',
+	'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
 );
 
 foreach ($acceptHeaders as $a)
