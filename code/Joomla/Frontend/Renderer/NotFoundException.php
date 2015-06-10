@@ -1,7 +1,7 @@
 <?php
-namespace Joomla\Frontend;
+namespace Joomla\Frontend\Renderer;
 
-class RendererNotFoundException extends \InvalidArgumentException
+class NotFoundException extends \InvalidArgumentException
 {
 	public function __construct($frontend, $type)
 	{

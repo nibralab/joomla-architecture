@@ -1,6 +1,8 @@
 <?php
 namespace Joomla\Frontend;
 
+use Joomla\Frontend\Renderer\NotFoundException;
+
 class RendererFactory
 {
 	public function create($frontend, $type = '')
@@ -22,7 +24,7 @@ class RendererFactory
 		}
 		catch (\Exception $e)
 		{
-			throw(new RendererNotFoundException($frontend, $type));
+			throw(new NotFoundException($frontend, $type));
 		}
 	}
 }
