@@ -13,20 +13,20 @@ class QualifiedHeader
 		{
 			$header = $match[1];
 		}
-		$this->header = $header;
+		$this->header    = $header;
 		$this->separator = '~' . preg_quote($separator) . '~';
-		$this->wildcard = $wildcard;
+		$this->wildcard  = $wildcard;
 	}
 
 	private function parseHeader($header)
 	{
-		$directives = preg_split('~\s*,\s*~', $header);
+		$directives     = preg_split('~\s*,\s*~', $header);
 		$acceptedRanges = array();
 
 		foreach ($directives as $directive)
 		{
 			$parts = preg_split('~\s*;\s*~', $directive);
-			$spec = array('token' => array_shift($parts));
+			$spec  = array('token' => array_shift($parts));
 
 			while (!empty($parts))
 			{
@@ -37,10 +37,13 @@ class QualifiedHeader
 				}
 				$spec[$parts2[0]] = $parts2[1];
 			}
+
 			if (!isset($spec['q']))
 			{
 				$spec['q'] = 1.0;
 			}
+			$spec['q'] += count($spec) / 100;
+
 			$acceptedRanges[] = $spec;
 		}
 
@@ -50,7 +53,7 @@ class QualifiedHeader
 	/**
 	 * @param $availableRanges
 	 *
-*@return mixed
+	 * @return mixed
 	 */
 	public function getBestMatch($availableRanges)
 	{
@@ -62,7 +65,7 @@ class QualifiedHeader
 			$available = $this->split($range);
 			foreach ($acceptedRanges as $acceptedRange)
 			{
-				$accepted  = $this->split($acceptedRange['token']);
+				$accepted = $this->split($acceptedRange['token']);
 
 				if (!$this->match($available[0], $accepted[0]))
 				{
@@ -76,7 +79,7 @@ class QualifiedHeader
 
 				if ($matching['q'] < $acceptedRange['q'])
 				{
-					$matching = $acceptedRange;
+					$matching          = $acceptedRange;
 					$matching['token'] = $range;
 				}
 			}
