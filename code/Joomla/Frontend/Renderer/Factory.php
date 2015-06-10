@@ -1,7 +1,7 @@
 <?php
 namespace Joomla\Frontend\Renderer;
 
-use Joomla\Utilities\AcceptHeader;
+use Joomla\Frontend\Http\AcceptHeader;
 
 class Factory
 {

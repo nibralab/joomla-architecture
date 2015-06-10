@@ -1,6 +1,6 @@
 <?php
 
-include '../code/Joomla/Utilities/QualifiedHeader.php';
+include '../code/Joomla/Frontend/Http/Header/QualifiedHeader.php';
 
 $testData = array(
 	'Accept' => array(
@@ -31,6 +31,7 @@ $testData = array(
 		'wildcard'  => '',
 		'headers'   => array(
 			'Accept-Language: de,en-US;q=0.7,en;q=0.3',
+			'da-DK,en-US;q=0.7,en;q=0.3'
 		),
 		'available' => array(
 			'en-GB',
@@ -45,10 +46,11 @@ foreach ($testData as $headerType)
 	{
 		try
 		{
-			$obj = new \Joomla\Utilities\QualifiedHeader($header, $headerType['separator'], $headerType['wildcard']);
+			$matcher = new \Joomla\Frontend\Http\QualifiedHeader($header, $headerType['separator'], $headerType['wildcard']);
 			echo "\n$header\n";
-			print_r($obj->getBestMatch($headerType['available']));
-		} catch (\Exception $e)
+			print_r($matcher->getBestMatch($headerType['available']));
+		}
+		catch (\Exception $e)
 		{
 			echo "\n{$e->getMessage()}\n\n";
 		}

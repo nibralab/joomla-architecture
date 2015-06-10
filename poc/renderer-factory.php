@@ -3,8 +3,8 @@
 include '../code/Joomla/Frontend/Renderer.php';
 include '../code/Joomla/Frontend/Renderer/Factory.php';
 include '../code/Joomla/Frontend/Renderer/NotFoundException.php';
-include '../code/Joomla/Utilities/QualifiedHeader.php';
-include '../code/Joomla/Utilities/AcceptHeader.php';
+include '../code/Joomla/Frontend/Http/Header/QualifiedHeader.php';
+include '../code/Joomla/Frontend/Http/Header/AcceptHeader.php';
 
 $factory = new \Joomla\Frontend\Renderer\Factory();
 

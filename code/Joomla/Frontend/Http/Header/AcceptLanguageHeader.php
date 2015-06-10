@@ -1,5 +1,5 @@
 <?php
-namespace Joomla\Utilities;
+namespace Joomla\Frontend\Http;
 
 class AcceptLanguageHeader extends QualifiedHeader
 {
