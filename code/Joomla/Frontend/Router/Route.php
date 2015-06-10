@@ -42,7 +42,7 @@ class Route
 
 	public function getParameters()
 	{
-		return array_merge($this->parameters, $this->values);
+		return array_merge($this->values, $this->parameters);
 	}
 
 	/**
@@ -201,10 +201,6 @@ class Route
 				if (isset($match[$token]))
 				{
 					$this->parameters[$token] = $match[$token];
-				}
-				elseif (isset($this->values[$token]))
-				{
-					$this->parameters[$token] = $this->values[$token];
 				}
 			}
 
