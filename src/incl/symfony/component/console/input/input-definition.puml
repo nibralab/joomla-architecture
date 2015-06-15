@@ -1,0 +1,29 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    class InputDefinition {
+        +<b>__construct</b>(array)
+        +<b>setDefinition</b>(array)
+        +string <b>getSynopsis</b>([bool])
+        --
+        +<b>setArguments</b>(InputArgument[])
+        +<b>addArguments</b>(InputArgument[])
+        +<b>addArgument</b>(InputArgument)
+        +bool <b>hasArgument</b>(string)
+        +InputArgument <b>getArgument</b>(string)
+        +InputArgument[] <b>getArguments</b>()
+        +int <b>getArgumentCount</b>()
+        +int <b>getArgumentRequiredCount</b>()
+        +array <b>getArgumentDefaults</b>()
+        --
+        +<b>setOptions</b>(InputOption[])
+        +<b>addOptions</b>(InputOption[])
+        +<b>addOption</b>(InputOption)
+        +bool <b>hasOption</b>(string)
+        +InputOption <b>getOption</b>(string)
+        +InputOption[] <b>getOptions</b>()
+        +bool <b>hasShortcut</b>(string)
+        +InputOption <b>getOptionForShortcut</b>(string)
+        +array <b>getOptionDefaults</b>()
+    }
+}
+@enduml

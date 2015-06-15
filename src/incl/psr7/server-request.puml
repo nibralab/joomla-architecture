@@ -18,7 +18,6 @@ namespace Psr.Http.Message {
         --
         +{abstract} array <b>getAttributes</b>()
         +{abstract} mixed <b>getAttribute</b>(string [, mixed])
-        --
         +{abstract} ServerRequestInterface <b>withAttribute</b>(string, mixed)
         +{abstract} ServerRequestInterface <b>withoutAttribute</b>(string)
     }

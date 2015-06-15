@@ -1,0 +1,7 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    interface InputAwareInterface {
+        {abstract} +<b>setInput</b>(InputInterface)
+    }
+}
+@enduml

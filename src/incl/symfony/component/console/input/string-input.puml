@@ -1,0 +1,7 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    class StringInput extends ArgvInput {
+        +<b>__construct</b>(string [, InputDefinition])
+    }
+}
+@enduml

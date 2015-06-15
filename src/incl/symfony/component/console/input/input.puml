@@ -1,0 +1,26 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    abstract class Input implements InputInterface {
+        __
+        +<b>__construct</b>([InputDefinition])
+        --
+        +<b>bind</b>(InputDefinition)
+        +<b>validate</b>()
+        {abstract} #<b>parse</b>()
+        +string <b>escapeToken</b>(string)
+        --
+        +<b>setArgument</b>(string, string)
+        +bool <b>hasArgument</b>(string|int)
+        +mixed <b>getArgument</b>(string)
+        +array <b>getArguments</b>()
+        --
+        +<b>setOption</b>(string, string|bool)
+        +bool <b>hasOption</b>(string)
+        +mixed <b>getOption</b>(string)
+        +array <b>getOptions</b>()
+        --
+        +<b>setInteractive</b>(bool)
+        +bool <b>isInteractive</b>()
+    }
+}
+@enduml

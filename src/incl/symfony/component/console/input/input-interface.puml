@@ -1,0 +1,26 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    interface InputInterface {
+        __
+        {abstract} +<b>bind</b>(InputDefinition)
+        {abstract} +<b>validate</b>()
+        --
+        {abstract} +bool <b>hasParameterOption</b>(string|array)
+        {abstract} +mixed <b>getParameterOption</b>(string|array [, mixed])
+        --
+        {abstract} +<b>setArgument</b>(string, string)
+        {abstract} +bool <b>hasArgument</b>(string|int)
+        {abstract} +mixed <b>getArgument</b>(string)
+        {abstract} +array <b>getArguments</b>()
+        {abstract} +string <b>getFirstArgument</b>()
+        --
+        {abstract} +<b>setOption</b>(string, string|bool)
+        {abstract} +bool <b>hasOption</b>(string)
+        {abstract} +mixed <b>getOption</b>(string)
+        {abstract} +array <b>getOptions</b>()
+        --
+        {abstract} +<b>setInteractive</b>(bool)
+        {abstract} +bool <b>isInteractive</b>()
+    }
+}
+@enduml

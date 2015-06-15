@@ -1,0 +1,18 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    class InputArgument {
+        __
+        +<b>__construct</b>(string [, int, string, mixed])
+        --
+        +string <b>getName</b>()
+        --
+        +bool <b>isRequired</b>()
+        +bool <b>isArray</b>()
+        --
+        +<b>setDefault</b>([mixed])
+        +mixed <b>getDefault</b>()
+        --
+        +string <b>getDescription</b>()
+    }
+}
+@enduml

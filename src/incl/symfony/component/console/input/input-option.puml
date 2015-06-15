@@ -1,0 +1,23 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    class InputOption {
+        __
+        +<b>__construct</b>(string [, string|array, int, string, mixed)
+        --
+        +string <b>getShortcut</b>()
+        +string <b>getName</b>()
+        --
+        +bool <b>acceptValue</b>()
+        +bool <b>isValueRequired</b>()
+        +bool <b>isValueOptional</b>()
+        +bool <b>isArray</b>()
+        --
+        +<b>setDefault</b>([mixed])
+        +mixed <b>getDefault</b>()
+        --
+        +string <b>getDescription</b>()
+        --
+        +bool <b>equals</b>(InputOption)
+    }
+}
+@enduml

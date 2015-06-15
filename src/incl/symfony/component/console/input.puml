@@ -1,0 +1,21 @@
+@startuml
+!include input/input-interface.puml
+!include input/argv-input.puml
+!include input/array-input.puml
+!include input/input.puml
+!include input/input-argument.puml
+!include input/input-aware-interface.puml
+!include input/input-definition.puml
+!include input/input-option.puml
+!include input/string-input.puml
+
+namespace Symfony.Component.Console.Input {
+
+    InputAwareInterface -> InputInterface
+
+    InputDefinition --> InputOption
+    InputDefinition --> InputArgument
+
+    InputInterface -> InputDefinition
+}
+@enduml

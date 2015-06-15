@@ -1,0 +1,36 @@
+@startuml
+!include incl/skin.puml
+!include incl/psr7/message.puml
+!include incl/psr7/request.puml
+!include incl/psr7/server-request.puml
+!include incl/symfony/component/console/input.puml
+
+title Input
+
+namespace Joomla.Input {
+
+    abstract class Symfony.Component.Console.Input.Input
+    interface Psr.Http.Message.ServerRequestInterface
+
+    class HttpInput extends Symfony.Component.Console.Input.Input {
+        +<b>__construct</b>(ServerRequestInterface [, InputDefinition])
+    }
+    HttpInput -> Psr.Http.Message.ServerRequestInterface: "«uses»"
+}
+
+class JInput implements PHP.Serializable, PHP.Countable {
+	+<b>__construct</b>(InputInterface [, array])
+	+JInput <b>__get</b>(string)
+	+int <b>count</b>()
+	+mixed <b>get</b>(string [, mixed, string])
+	+mixed <b>getArray</b>([array, mixed, string])
+	#mixed <b>getArrayRecursive</b>([array, mixed, string, bool])
+	+<b>set</b>(string, mixed)
+	+<b>def</b>(string, mixed)
+	+mixed <b>__call</b>(string, array)
+	+string <b>getMethod</b>()
+	+string <b>serialize</b>()
+	+JInput <b>unserialize</b>(string)
+	#<b>loadAllInputs</b>()
+}
+@enduml

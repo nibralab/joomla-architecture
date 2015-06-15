@@ -1,0 +1,17 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    class ArgvInput extends Input {
+        __
+        +<b>__construct</b>([array [, InputDefinition]])
+        +string <b>__toString</b>()
+        --
+        #<b>setTokens</b>(array)
+        #<b>parse</b>()
+        --
+        +bool <b>hasParameterOption</b>(string|array)
+        +mixed <b>getParameterOption</b>(string|array [, mixed])
+        --
+        +string <b>getFirstArgument</b>()
+    }
+}
+@enduml

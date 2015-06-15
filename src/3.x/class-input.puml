@@ -1,0 +1,14 @@
+@startuml
+namespace Joomla.Input {
+    class Input
+    Input -> Joomla.Filter.InputFilter
+
+    class Cli extends Input
+
+    class Cookie extends Input
+
+    class Files extends Input
+
+    class Json extends Input
+}
+@enduml

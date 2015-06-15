@@ -1,0 +1,16 @@
+@startuml
+namespace Symfony.Component.Console.Input {
+    class ArrayInput extends Input {
+        __
+        +<b>__construct</b>(array [, InputDefinition])
+        +string <b>__toString</b>()
+        --
+        #<b>parse</b>()
+        --
+        +bool <b>hasParameterOption</b>(string|array)
+        +mixed <b>getParameterOption</b>(string|array [, mixed])
+        --
+        +string <b>getFirstArgument</b>()
+    }
+}
+@enduml
