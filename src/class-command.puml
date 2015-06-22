@@ -63,7 +63,7 @@ namespace Joomla.Command {
     Controller --> CommandProcessor
     class CommandProcessor {
         #Dispatcher <b>dispatcher</b>
-        +<b>executeCommand</b>(Command)
+        +<b>executeCommand</b>(Command, Input, Output)
     }
     CommandProcessor --> Command
     note as CommandProcessorNote
