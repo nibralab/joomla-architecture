@@ -6,18 +6,17 @@ trait DynamicRendererImplementation {
 		$this->handlers[strtolower($type)] = $handler;
 	}
 
-	public function __call($method, $arguments) {
-		if (preg_match('~^visit(.+)~', $method, $match)) {
-			$type = strtolower($match[1]);
-			if (!isset($this->handlers[$type])) {
-				$type = 'default';
-			}
-			if (isset($this->handlers[$type])) {
-				$handler = $this->handlers[$type];
-				$this->output .= $handler($arguments[0]);
-			} else {
-				echo "\nLogWarn: Unknown content type {$match[1]}, no default\n";
-			}
+	public function visit($contentType, array $arguments) {
+		// Maybe needs more sanitisation
+		$type = strtolower($contentType);
+		if (!isset($this->handlers[$type])) {
+			$type = 'default';
+		}
+		if (isset($this->handlers[$type])) {
+			$handler = $this->handlers[$type];
+			$this->output .= $handler($arguments[0]);
+		} else {
+			echo "\nLogWarn: Unknown content type {$contentType}, no default\n";
 		}
 	}
 }
@@ -49,13 +48,13 @@ abstract class Content {
 
 class ContentType extends Content {
 	public function accept(Renderer $renderer) {
-		$renderer->visitContent($this);
+		$renderer->visit('Content', array($this));
 	}
 }
 
 class NewContentType extends Content {
 	public function accept(Renderer $renderer) {
-		$renderer->visitNewContent($this);
+		$renderer->visit('NewContent', array($this));
 	}
 	public function asHtml(NewContentType $content) {
 		return __METHOD__ . ': ' . $content->getContents() . "\n";
@@ -64,13 +63,13 @@ class NewContentType extends Content {
 
 class OtherContentType extends Content {
 	public function accept(Renderer $renderer) {
-		$renderer->visitOtherContent($this);
+		$renderer->visit('OtherContent', array($this));
 	}
 }
 
 class UnregisteredContentType extends Content {
 	public function accept(Renderer $renderer) {
-		$renderer->visitUnregisteredContent($this);
+		$renderer->visit('UnregisteredContent', array($this));
 	}
 }
 
