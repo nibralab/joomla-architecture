@@ -6,8 +6,6 @@ author: Niels Braczek
 author_email: nbraczek@bsds.de
 ---
 
-## Undo Command Example
-
 With the new architecture, it is possible to provide a global undo mechanism.
  
 Since the execution of any **Command** is surrounded by the events `beforeExecute` and `afterExecute`, a simple **Plugin**

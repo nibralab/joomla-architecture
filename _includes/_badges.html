@@ -1,0 +1,27 @@
+<ul class="badges">
+    {% if page.github %}
+    <li><a href="https://github.com/{{ page.github }}/releases">
+        <img src="https://img.shields.io/github/release/{{ page.github }}.svg" alt=""/>
+    </a></li>
+    <li><a href="https://github.com/{{ page.github }}/tags">
+        <img src="https://img.shields.io/github/tag/{{ page.github }}.svg" alt="" />
+    </a></li>
+    <li><a href="https://github.com/{{ page.github }}/issues">
+        <img src="https://img.shields.io/github/issues/{{ page.github }}.svg" alt="" />
+    </a></li>
+    <li><a href="https://github.com/{{ page.github }}/blob/master/LICENSE.md">
+        <img src="https://img.shields.io/github/license/{{ page.github }}.svg" alt="" />
+    </a></li>
+    {% endif %}
+    {% if page.packagist %}
+    <li><a href="https://packagist.org/packages/{{ page.github }}">
+        <img src="https://img.shields.io/packagist/v/{{ page.packagist }}.svg" alt="" />
+        <img src="https://img.shields.io/packagist/vpre/{{ page.packagist }}.svg" alt="" />
+        <img src="https://img.shields.io/packagist/l/{{ page.packagist }}.svg" alt="" />
+        <img src="" alt="" />
+    </a></li>
+    {% endif %}
+</ul>
+{% if page.hidethis %}
+![Freestyle](https://img.shields.io/badge/MyBadge-Easily_created-yellow.svg)
+{% endif %}

@@ -1,12 +1,12 @@
 ---
-layout: default
-title: About the Project
-category: About
-author: Niels Braczek
-author_email: nbraczek@bsds.de
+layout: page
+title: Joomla 4 Architecture
+excerpt: "My thoughts about how I think, Joomla should look like in the future"
+tags: [nibralab, joomla, joomla4, pythagoras, orthogonal, architecture]
+comments: true
+share: true
+fork: true
 ---
-
-## About this Project
 
 The **Hypermedia API** was a "Make it happen" session on J and Beyond 2015 in Prague, lead by Chris Davenport.
 The basic idea is to create an interface, that is totally agnostic about the channel, which is used for communication.

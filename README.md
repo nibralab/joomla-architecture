@@ -2,7 +2,7 @@
 
 This is a pool of ideas for the architecture of Joomla! 4.
 
-Concepts, that do not break compatibility to 3.x, may get implemented to 3.6.
+Concepts, that do not break compatibility to 3.x, may get implemented to 3.x.
 
 ## Content
 

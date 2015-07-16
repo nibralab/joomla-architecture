@@ -1,2 +1,58 @@
-exclude:
-  - README.md
+# Site wide configuration
+title:            nibralab
+locale:           en_US
+url:              http://nibralab.github.io
+
+# Jekyll configuration
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+
+# Site owner
+owner:
+  name: Niels Braczek
+  avatar: https://www.gravatar.com/avatar/6df6b94097c21564b7521425990fe162?s=328&d=identicon&r=PG
+  bio: "Web Developer and Clean Code Evangelist"
+  email: nbraczek@bsds.de
+  disqus-shortname: greencape
+  twitter: hiPHPie
+  facebook: niels.braczek
+  google:
+    plus: NielsBraczek
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
+  github: nibralab
+  stackoverflow: 1619658/nibra
+  linkedin: braczek
+  xing: Niels_Braczek
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: #username
+  soundcloud: #username
+  weibo: #username
+  flickr: #username
+  joomla: niels-braczek
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "examples"]

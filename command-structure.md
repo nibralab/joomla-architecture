@@ -6,8 +6,6 @@ author: Niels Braczek
 author_email: nbraczek@bsds.de
 ---
 
-## Command Structure
-
 **Commands** are going to replace the controllers of Joomla! < 4.0.
 Each command implements a single task, that can be addressed from arbitrary channels.
 

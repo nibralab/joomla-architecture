@@ -6,8 +6,6 @@ author: Niels Braczek
 author_email: nbraczek@bsds.de
 ---
 
-## Other Concepts
-
 This list contains links to concepts and code, that might be interesting for Joomla! 4.
 They need some more investigation about how they fit into Joomla. 
 

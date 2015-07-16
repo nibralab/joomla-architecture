@@ -1,0 +1,10 @@
+{% if page.home.url %}
+<div class="doc-nav">
+    <a class="center" href="/{{ page.home.url }}"><span class="fa fa-fw fa-angle-double-up"></span> {{ page.home.title }}</a>
+</div>
+<div class="doc-nav">
+    {% if page.prev.url %}<a class="left" href="/{{ page.prev.url }}"><span class="fa fa-fw fa-angle-left"></span> {{ page.prev.title }}</a>{% else %}<a class="left disabled"><span class="fa fa-fw fa-angle-left"></span></a>{% endif %}
+    {% if page.up.url %}<a class="center" href="/{{ page.up.url }}"><span class="fa fa-fw fa-angle-up"></span> {{ page.up.title }}</a>{% else %}<a class="center disabled"><span class="fa fa-fw fa-angle-up"></span></a>{% endif %}
+    {% if page.next.url %}<a class="right" href="/{{ page.next.url }}">{{ page.next.title }} <span class="fa fa-fw fa-angle-right"></span></a>{% else %}<a class="right disabled"><span class="fa fa-fw fa-angle-right"></span></a>{% endif %}
+</div>
+{% endif %}

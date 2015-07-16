@@ -6,8 +6,6 @@ author: Niels Braczek
 author_email: nbraczek@bsds.de
 ---
 
-## Frontend Structure
-
 Each **Channel** has its own **Frontend**, which is responsible for abstracting the communication for the rest of the application.
 The diagram shows three different **Frontend**s.
 There could be many others, though.

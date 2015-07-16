@@ -6,8 +6,6 @@ author: Niels Braczek
 author_email: nbraczek@bsds.de
 ---
 
-## Input Abstraction
-
 For many operations, an ID is needed. These IDs usually are numbers, and thus hard to remember for humans.
 Therefore, whenever a data record has a unique alias (like `user_id` - `user_name`), the alias can be used instead of
 the numeric ID.

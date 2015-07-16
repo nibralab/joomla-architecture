@@ -1,0 +1,16 @@
+# Site navigation links
+
+- title: About
+  url: /about/
+
+- title: Blog
+  url: /posts/
+
+- title: Projects
+  id: projects
+  menu:
+  - title: Joomla4 Architecture
+    url: /joomla-architecture/
+
+- title: BSDS
+  url: http://bsds.de

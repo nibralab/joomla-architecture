@@ -1,0 +1,10 @@
+{% if page.image.feature %}
+<div class="image-wrap">
+    {% if page.image.feature contains 'http' %}
+    <img src="{{ page.image.feature }}" alt="{{ page.title }} feature image">
+    {% else %}
+    <img id="feature-image" src="" data-ref="{{ page.image.feature }}" alt="{{ page.title }} feature image">
+    {% endif %}
+    {% if page.image.credit %}<span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>{% endif %}
+</div><!-- /.image-wrap -->
+{% endif %}
