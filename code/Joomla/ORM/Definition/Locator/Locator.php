@@ -1,0 +1,57 @@
+<?php
+/**
+ * Part of the Joomla Framework ORM Package
+ *
+ * @copyright  Copyright (C) 2015 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
+ */
+
+namespace Joomla\ORM\Definition\Locator;
+
+use Joomla\ORM\Definition\Locator\Strategy\StrategyInterface;
+
+/**
+ * Class Locator
+ *
+ * @package  Joomla\ORM
+ * @since    1.0
+ */
+final class Locator implements LocatorInterface
+{
+	/** @var  StrategyInterface[]  Locator strategies */
+	private $strategies = [];
+
+	/**
+	 * Constructor
+	 *
+	 * @param   StrategyInterface[]  $strategies  The strategies used to locate files
+	 */
+	public function __construct(array $strategies)
+	{
+		$this->strategies = $strategies;
+	}
+
+	/**
+	 * Find the XML description file for an entity
+	 *
+	 * @param   string  $entityName  The name of the entity
+	 *
+	 * @return  string  Path to the XML file
+	 */
+	public function findXmlFile($entityName)
+	{
+		$filename = $entityName . '.xml';
+
+		foreach ($this->strategies as $strategy)
+		{
+			$path = $strategy->locate($filename);
+
+			if (!is_null($path))
+			{
+				return $path;
+			}
+		}
+
+		return null;
+	}
+}

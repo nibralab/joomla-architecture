@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE entity SYSTEM "/home/nibra/Development/nibralab/joomla-architecture/code/Joomla/ORM/Definition/entity.dtd">
+<entity name="dummy">
+
+    <storage>
+        <api handler="\PoC\MockApiFactory"/>
+    </storage>
+
+    <fields>
+        <field name="id"
+               type="id"
+               label="JGLOBAL_FIELD_ID_LABEL"
+               description="JGLOBAL_FIELD_ID_DESC"
+               default="null"
+            >
+            <validation rule="positive"/>
+            <validation rule="integer"/>
+        </field>
+
+        <field name="title"
+               type="title"
+               label="JGLOBAL_TITLE"
+            >
+            <validation rule="maxlen" value="64"/>
+        </field>
+    </fields>
+</entity>

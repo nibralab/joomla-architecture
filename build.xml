@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Default" default="build" basedir=".">
+
+    <target name="build">
+        <echo message="Default Build File"/>
+    </target>
+
+    <target name="phpab">
+        <exec command="phpab -o code/Joomla/autoload.php code/Joomla"/>
+    </target>
+</project>
