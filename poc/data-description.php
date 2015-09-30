@@ -1,4 +1,19 @@
 <?php
+/**
+ * Test script for the ORM implementation
+ *
+ * @todo Write real tests
+ * @todo Allow Entity definitions using JSON and Yaml
+ * @todo Add ID objects (compound ids)
+ * @todo Enable EntityBuilder to support compound ids
+ * @todo Complete the Operator list
+ * @todo Add triggers for HCs
+ * @todo Ensure the support of Entity / Collection status
+ * @todo Add an example for handling of start_date, duration, end_date
+ * @todo Add documentation
+ * @todo Add eager loading
+ * @todo Commit Joomla\ORM to joomla-framework
+ */
 
 namespace PoC;
 
