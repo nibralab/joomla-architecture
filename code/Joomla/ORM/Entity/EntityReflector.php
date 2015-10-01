@@ -8,7 +8,7 @@
 
 namespace Joomla\ORM\Entity;
 
-use Joomla\ORM\Definition\Parser\Entity as XmlEntity;
+use Joomla\ORM\Definition\Parser\Entity as EntityStructure;
 use Joomla\ORM\Definition\Parser\Field;
 use Joomla\ORM\Repository\StorageProviderInterface;
 
@@ -106,11 +106,11 @@ class EntityReflector
 	/**
 	 * Set the data definition
 	 *
-	 * @param   XmlEntity  $definition  The data definition
+	 * @param   EntityStructure  $definition  The data definition
 	 *
 	 * @return  void
 	 */
-	public function setDefinition(XmlEntity $definition)
+	public function setDefinition(EntityStructure $definition)
 	{
 		$tmp = new \ReflectionProperty('Joomla\ORM\Entity\Entity', 'definition');
 		$tmp->setAccessible(true);

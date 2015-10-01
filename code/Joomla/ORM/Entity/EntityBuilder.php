@@ -11,7 +11,7 @@ namespace Joomla\ORM\Entity;
 use Joomla\ORM\Definition\Locator\LocatorInterface;
 use Joomla\ORM\Definition\Parser\BelongsTo;
 use Joomla\ORM\Definition\Parser\Element;
-use Joomla\ORM\Definition\Parser\Entity as XmlEntity;
+use Joomla\ORM\Definition\Parser\Entity as EntityStructure;
 use Joomla\ORM\Definition\Parser\Field;
 use Joomla\ORM\Definition\Parser\HasMany;
 use Joomla\ORM\Definition\Parser\HasManyThrough;
@@ -105,7 +105,7 @@ class EntityBuilder
 	 *
 	 * @param   string  $filename  The definition file path
 	 *
-	 * @return  XmlEntity  The parsed description
+	 * @return  EntityStructure  The parsed description
 	 */
 	private function parseDescription($filename)
 	{
