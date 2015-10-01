@@ -32,16 +32,14 @@ final class Locator implements LocatorInterface
 	}
 
 	/**
-	 * Find the XML description file for an entity
+	 * Find the description file for an entity
 	 *
-	 * @param   string  $entityName  The name of the entity
+	 * @param   string $filename  The name of the file
 	 *
 	 * @return  string  Path to the XML file
 	 */
-	public function findXmlFile($entityName)
+	public function findFile($filename)
 	{
-		$filename = $entityName . '.xml';
-
 		foreach ($this->strategies as $strategy)
 		{
 			$path = $strategy->locate($filename);

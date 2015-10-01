@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE entity SYSTEM "/home/nibra/Development/nibralab/joomla-architecture/code/Joomla/ORM/Definition/entity.dtd">
+<!DOCTYPE entity SYSTEM
+    "/home/nibra/Development/nibralab/joomla-architecture/code/Joomla/ORM/Definition/entity.dtd">
 <entity name="assets">
 
     <storage>

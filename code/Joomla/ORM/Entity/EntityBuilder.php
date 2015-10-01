@@ -16,7 +16,9 @@ use Joomla\ORM\Definition\Parser\Field;
 use Joomla\ORM\Definition\Parser\HasMany;
 use Joomla\ORM\Definition\Parser\HasManyThrough;
 use Joomla\ORM\Definition\Parser\HasOne;
-use Joomla\ORM\Definition\Parser\Parser;
+use Joomla\ORM\Definition\Parser\JsonParser;
+use Joomla\ORM\Definition\Parser\XmlParser;
+use Joomla\ORM\Definition\Parser\YamlParser;
 use Joomla\ORM\Exception\FileNotFoundException;
 use Joomla\ORM\Finder\Operator;
 use Joomla\ORM\Repository\Repository;
@@ -85,27 +87,51 @@ class EntityBuilder
 	 */
 	private function locateDescription($entityName)
 	{
-		$xmlFile = $this->locator->findXmlFile($entityName);
-
-		if (is_null($xmlFile))
+		foreach (['.xml', '.json', '.yml', '.yaml'] as $extension)
 		{
-			throw new FileNotFoundException("Unable to locate XML file for entity '{$entityName}'");
+			$filename = $this->locator->findFile($entityName . $extension);
+
+			if (!is_null($filename))
+			{
+				return $filename;
+			}
 		}
 
-		return $xmlFile;
+		throw new FileNotFoundException("Unable to locate definition file for entity '{$entityName}'");
 	}
 
 	/**
 	 * Parse the description file
 	 *
-	 * @param   string $xmlFile The definition file path
+	 * @param   string  $filename  The definition file path
 	 *
 	 * @return  XmlEntity  The parsed description
 	 */
-	private function parseDescription($xmlFile)
+	private function parseDescription($filename)
 	{
-		$parser = new Parser();
-		$parser->open($xmlFile);
+		$extension = preg_replace('~^.*?\.([^.]+)$~', '\1', $filename);
+
+		switch ($extension)
+		{
+			case 'xml':
+				$parser = new XmlParser();
+				break;
+
+			case 'json':
+				$parser = new JsonParser();
+				break;
+
+			case 'yml':
+			case 'yaml':
+				$parser = new YamlParser();
+				break;
+
+			default:
+				throw new \RuntimeException("Unable to handle '.$extension' definition files.");
+				break;
+		}
+
+		$parser->open($filename);
 
 		return $parser->parse([
 			'onBeforeEntity'        => [$this, 'prepareEntity'],
@@ -127,8 +153,7 @@ class EntityBuilder
 	 */
 	public function prepareEntity($attributes)
 	{
-		$type         = strtoupper(empty($attributes['extends']) ? $attributes['name'] : $attributes['extends']);
-		$this->prefix = 'COM_' . $type . '_FIELD_';
+		$this->prefix = 'COM_' . $attributes['name'] . '_FIELD_';
 	}
 
 	/**

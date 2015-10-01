@@ -17,11 +17,11 @@ namespace Joomla\ORM\Definition\Locator;
 interface LocatorInterface
 {
 	/**
-	 * Find the XML description file for an entity
+	 * Find the description file for an entity
 	 *
 	 * @param   string  $entityName  The name of the entity
 	 *
 	 * @return  string  Path to the XML file
 	 */
-	public function findXmlFile($entityName);
+	public function findFile($entityName);
 }
