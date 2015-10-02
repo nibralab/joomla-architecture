@@ -55,10 +55,18 @@ in lowercase letters, but in plural.
 For `Master` in the sample above, the associated Detail records can be accessed using the virtual `details` property,
 and the associated Tags using `tags`. 
 
+> **Problem**: If a detail has multiple FKs to the same entity type, how should naming be done?
+> Example: Let's say, an article has an `author_id` and a `publisher_id`, both pointing to users.
+> How should the property names be in the user entity?
+>
+> Most intuitive would be `articles_authored` and `articles_published`,
+> i.e., the other entity's type in plural, followed by a verbum derived from the FK fieldname.
+> Is it possible to build an inflector for that?
+
 ##### Lazy loading
 
 By default, relations are resolved with lazy loading.
-That means, that the relation data will be loaded as soon as and only if you read the virtual propoerty assigned to that relation.
+That means, that the relation data will be loaded as soon as and only if you read the virtual property assigned to that relation.
 
 ```php
 <?php
@@ -109,3 +117,6 @@ $master = $repository
 
 The `parent` and `tags` virtual properties are populated immediately,
 but `details` is still lazy loaded.
+
+> **Note**: The tags of the parent will not be eager loaded.
+> To do so, the virtual column '`parent.tags`' must be added to the query.
