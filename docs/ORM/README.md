@@ -5,6 +5,8 @@ The central element is the `Entity`, a data structure holding the data of a doma
 
 ## Sample model
 
+In the examples, the following sample data model is used.
+
 ![Sample model](../../svg/testmodel.svg)
 
 ## Repository
@@ -17,8 +19,15 @@ Depending on the entity, it provides access to the corresponding `EntityFinder`,
 
 ```php
 <?php
+use Joomla\ORM\Definition\Locator\Locator;
+use Joomla\ORM\Definition\Locator\Strategy\RecursiveDirectoryStrategy;
+use Joomla\ORM\Repository\Repository;
 
-$repository = new Repository('Master');
+$locator = new Locator([
+	new RecursiveDirectoryStrategy(__DIR__),
+]);
+
+$repository = new Repository('Master', $locator);
 $master = $repository->findById(42);
 ```
 
@@ -53,8 +62,16 @@ That means, that the relation data will be loaded as soon as and only if you rea
 
 ```php
 <?php
+use Joomla\ORM\Definition\Locator\Locator;
+use Joomla\ORM\Definition\Locator\Strategy\RecursiveDirectoryStrategy;
+use Joomla\ORM\Finder\Operator;
+use Joomla\ORM\Repository\Repository;
 
-$repository = new Repository('Master');
+$locator = new Locator([
+	new RecursiveDirectoryStrategy(__DIR__),
+]);
+
+$repository = new Repository('Master', $locator);
 $master = $repository
     ->findOne()
     ->with('id', Operator::EQUAL, 42)
@@ -73,8 +90,16 @@ This can easily be done by specifying the virtual field in the query.
 
 ```php
 <?php
+use Joomla\ORM\Definition\Locator\Locator;
+use Joomla\ORM\Definition\Locator\Strategy\RecursiveDirectoryStrategy;
+use Joomla\ORM\Finder\Operator;
+use Joomla\ORM\Repository\Repository;
 
-$repository = new Repository('Master');
+$locator = new Locator([
+	new RecursiveDirectoryStrategy(__DIR__),
+]);
+
+$repository = new Repository('Master', $locator);
 $master = $repository
     ->findOne()
     ->columns('*', 'parent', 'tags')
