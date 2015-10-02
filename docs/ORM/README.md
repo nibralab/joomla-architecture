@@ -5,7 +5,7 @@ The central element is the `Entity`, a data structure holding the data of a doma
 
 ## Sample model
 
-![Sample model](https://github.com/nibralab/joomla-architecture/raw/master/svg/testmodel.svg)
+![Sample model](../../svg/testmodel.svg)
 
 ## Repository
 
