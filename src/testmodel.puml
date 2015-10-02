@@ -1,0 +1,40 @@
+@startuml
+!include incl/skin.puml
+
+title Sample Model\n
+
+object Master << Entity >> {
+    PK id
+    FK parent_id > Master
+    string title
+    string field_a
+    string field_b
+    string field_c
+}
+object Detail << Entity >> {
+    PK id
+    FK master_id > Master
+    string field_1
+    string field_2
+}
+object Tags << Entity >> {
+    PK id
+    string tag
+    string description
+}
+object Extra << Entity >> {
+    PK/FK detail_id > Detail
+    string info
+}
+object Linktable << Association >> {
+    PK/FK master_id > Master
+    PK/FK tag_id > Tags
+}
+
+Master "1" o-> "0..*" Master : parent_id
+Master "0..*" <-l-> "0..*" Tags
+(Tags, Master) ..o Linktable << Map >>
+Detail "1" o-u-> "0..*" Master : master_id
+Detail "0..1" <-l-o "1" Extra : detail_id
+
+@enduml

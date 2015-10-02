@@ -13,6 +13,19 @@ skinparam class {
     ArrowFontColor Black
 }
 
+skinparam object {
+	BorderColor Black
+	BackgroundColor White
+	FontName Verdana
+	FontSize 12
+    FontColor Black
+
+    ArrowColor Black
+    ArrowFontName Verdana
+	ArrowFontSize 12
+    ArrowFontColor Black
+}
+
 skinparam stereotype {
 	ABorderColor Black
     ABackgroundColor White
