@@ -25,7 +25,7 @@ $r->addGetRoute('users/:user', function ($params) {
 $r->addGetRoute('users/:user/notes/:note?', function ($params) {
 	echo "Handle notes for a single user\n";
 	print_r($params);
-})->setValues(array('action' => 'note.edit', 'note' => 0));
+})->setValues(array('action' => 'note.show', 'note' => 0));
 
 $r->setCatchallRoute(function ($params) {
 	echo "Default route\n";
@@ -51,7 +51,7 @@ foreach ($urls as $url)
 			$route = $r->getMatchingRoute($method, $url);
 			call_user_func($route->getCallback(), $route->getParameters());
 		}
-		catch (Exception $e)
+		catch (\Exception $e)
 		{
 			echo "No matching route\n";
 		}
