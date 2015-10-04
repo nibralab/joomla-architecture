@@ -1,0 +1,28 @@
+@startuml
+!include incl/skin.puml
+hide << Entity >> circle
+hide << Association >> circle
+
+title SEO Component\n
+
+interface Router {
+    parse(&input): void
+}
+
+interface UrlBuilder {
+    build(vars): string
+}
+
+package SeoComponent {
+    class SeoUrl << Entity >> {
+        PK string url
+        string entity_name
+        FK entity_id
+        string view
+    }
+    class SeoRouter implements Router, UrlBuilder {
+        build([entity_name, entity_id, view=default]): string
+        parse(&input): void
+    }
+}
+@enduml

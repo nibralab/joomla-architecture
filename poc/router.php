@@ -1,10 +1,11 @@
 <?php
+namespace PoC;
 
-include '../code/Joomla/Frontend/Router.php';
-include '../code/Joomla/Frontend/Router/Route.php';
-include '../code/Joomla/Frontend/Router/NotFoundException.php';
+use Joomla\Frontend\Router;
 
-$r = new \Joomla\Frontend\Router();
+include "../code/Joomla/autoload.php";
+
+$r = new Router();
 
 $r->addGetRoute('users', function($params) {
 	echo "List all users\n";
