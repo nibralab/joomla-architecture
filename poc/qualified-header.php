@@ -1,6 +1,8 @@
 <?php
 
-include '../code/Joomla/Frontend/Http/Header/QualifiedHeader.php';
+namespace PoC;
+
+include "../code/Joomla/autoload.php";
 
 $testData = array(
 	'Accept' => array(

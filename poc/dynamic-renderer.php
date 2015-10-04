@@ -1,4 +1,8 @@
 <?php
+namespace PoC;
+
+include "../code/Joomla/autoload.php";
+
 trait DynamicRendererImplementation {
 	private $handlers = array();
 

@@ -51,7 +51,7 @@ foreach ($urls as $url)
 			$route = $r->getMatchingRoute($method, $url);
 			call_user_func($route->getCallback(), $route->getParameters());
 		}
-		catch (\Exception $e)
+		catch (Router\NotFoundException $e)
 		{
 			echo "No matching route\n";
 		}
