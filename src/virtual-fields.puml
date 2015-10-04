@@ -1,0 +1,63 @@
+@startuml
+!include incl/skin.puml
+hide << Entity >> circle
+hide << Association >> circle
+
+title Virtual Properties\n
+
+class Master << Entity >> {
+    PK id
+    ..Properties..
+    string title
+    string field_a
+    string field_b
+    string field_c
+    ..Foreign Keys..
+    FK parent_id > Master
+    ..Virtual Properties..
+    entity parent
+    collection details
+    collection tags
+}
+class Detail << Entity >> {
+    PK id
+    ..Properties..
+    string field_1
+    string field_2
+    ..Foreign Keys..
+    FK master_id > Master
+    ..Virtual Properties..
+    entity master
+    entity extra
+}
+class Tags << Entity >> {
+    PK id
+    ..Properties..
+    string tag
+    string description
+    ..Virtual Properties..
+    collection masters
+}
+class Extra << Entity >> {
+    PK (detail_id)
+    ..Properties..
+    string info
+    ..Foreign Keys..
+    FK detail_id > Detail
+    ..Virtual Properties..
+    entity detail
+}
+class Linktable << Association >> {
+    PK (master_id, tag_id)
+    ..Foreign Keys..
+    FK master_id > Master
+    FK tag_id > Tags
+}
+
+Master "1" o-> "0..*" Master : parent_id
+Master "0..*" <-l-> "0..*" Tags
+(Tags, Master) ..o Linktable
+Detail "1" o-u-> "0..*" Master : master_id
+Detail "0..1" <-l-o "1" Extra : detail_id
+
+@enduml
