@@ -49,7 +49,7 @@ it is used for CLI access as well.
   - `Body`: Usually empty. May be used to transport data from files (e.g., import files)
   - `RequestTarget`: The script name, usually 'joomla.php', followed by the sub-command.
   - `Method`: Always 'CLI'.
-  - `Uri`: A `UriInterface` instance for 'cli://<user>@<working-dir>?<commandline-arguments>'.
+  - `Uri`: A `UriInterface` instance for 'cli://&lt;user>@&lt;working-dir>?&lt;commandline-arguments>'.
   - `ServerParams`: Data related to the incoming request environment, typically derived from `$_SERVER`.
   - `CookieParams`: Environment variables, accessed through `getenv()`/`putenv()` (*not* `$_ENV`).
   - `QueryParams`: The command line arguments and options.
