@@ -112,16 +112,12 @@ The `DatabaseLocatorStrategy` looks into the `extensions` table in the database 
 and attempts to instantiate the command according to the naming convention.
 
 For extensions without a namespace, i.e., legacy code, 
-a file name based approach is provided by the `RecursiveDirectoryLocatorStrategy`.
-It searches the component's command, controller, and model directories (in that order) for a suitable command.
-The `LegacyMvcLocatorStrategy` returns a command, that just calls the component's bootstrap file,
+the `LegacyMvcLocatorStrategy` returns a command, that just calls the component's bootstrap file,
 relying on that it will act correctly according to the input.
 
 ```php
 $locator = new CommandLocator([
     new DatabaseLocatorStrategy,
-    new RecursiveDirectoryLocatorStrategy(JPATH . '/components'),
-    new RecursiveDirectoryLocatorStrategy(JPATH . '/administrator/components'),
     new LegacyMvcLocatorStrategy
 ]);
 
