@@ -115,15 +115,40 @@ For extensions without a namespace, i.e., legacy code,
 the `LegacyMvcLocatorStrategy` returns a command, that just calls the component's bootstrap file,
 relying on that it will act correctly according to the input.
 
+Other strategies can be added.
+
 ```php
 $locator = new CommandLocator([
     new DatabaseLocatorStrategy,
     new LegacyMvcLocatorStrategy
 ]);
 
+$dispatcher->trigger('onCommandLocatorSetup', $locator);
+
 $command = $locator->find($request);
 ```
 
 ## Command Execution
 
+The `Command` is handled by a `CommandBus`, which supports nested middleware.
+Each Middleware is a separate object and can do anything it wants.
+
+```php
+$commandBus = new CommandBus([
+    new LoggingMiddleware($logger),
+    new EventMiddleware($emitter),
+    new CommandHandlerMiddleware
+]);
+
+$dispatcher->trigger('onCommandBusSetup', $commandBus);
+
+$content = $commandBus->handle($command)
+```
+
+> **Note:** Maybe the command location process should be part of the `CommandHandlerMiddleware`.
+
+**External Dependencies:**
+
+  - [league/tactician](https://github.com/thephpleague/tactician)
+  
 ## Rendering
