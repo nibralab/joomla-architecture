@@ -108,15 +108,18 @@ The `Router` calls the routing strategy chain, returning a modified `ServerReque
 
 Next, the `Command` is located. To keep that flexible, strategies are used here as well.
 Depending on the values in `$request`, the strategies try to locate a corresponding command.
-The `DefaultLocatorStrategy` tries to instantiate the command class by name using autoload,
-which is possible only for core components.
-A file name based approach is provided by the `RecursiveDirectoryLocatorStrategy`.
-It searches the component's 'Command', 'Controller', and 'Model' directories (in that order) for a suitable command.
-The `LegacyMvcLocatorStrategy` returns a command, that just calls the component's bootstrap file.
+The `DatabaseLocatorStrategy` looks into the `extensions` table in the database to get the namespace for the component,
+and attempts to instantiate the command according to the naming convention.
+
+For extensions without a namespace, i.e., legacy code, 
+a file name based approach is provided by the `RecursiveDirectoryLocatorStrategy`.
+It searches the component's command, controller, and model directories (in that order) for a suitable command.
+The `LegacyMvcLocatorStrategy` returns a command, that just calls the component's bootstrap file,
+relying on that it will act correctly according to the input.
 
 ```php
 $locator = new CommandLocator([
-    new DefaultLocatorStrategy
+    new DatabaseLocatorStrategy,
     new RecursiveDirectoryLocatorStrategy(JPATH . '/components'),
     new RecursiveDirectoryLocatorStrategy(JPATH . '/administrator/components'),
     new LegacyMvcLocatorStrategy
@@ -124,9 +127,6 @@ $locator = new CommandLocator([
 
 $command = $locator->find($request);
 ```
-
-> **Problem**: Here classes with unknown namespace have to be instantiated.
-> Are there other ways to determine the FQCN without parsing the file? 
 
 ## Command Execution
 
