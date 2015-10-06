@@ -145,10 +145,10 @@ $dispatcher->trigger('onCommandBusSetup', $commandBus);
 $content = $commandBus->handle($command)
 ```
 
-> **Note:** Maybe the command location process should be part of the `CommandHandlerMiddleware`.
+> **Note:** Maybe parts of the command location process should go into the `CommandHandlerMiddleware`.
 
 **External Dependencies:**
 
-  - [league/tactician](https://github.com/thephpleague/tactician)
+  - [league/tactician](http://tactician.thephpleague.com/)
   
 ## Rendering
