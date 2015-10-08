@@ -39,7 +39,7 @@ class Repository implements RepositoryInterface
 	 * @param   string            $entityName  The name (type) of the entity
 	 * @param   LocatorInterface  $locator     The XML description file locator
 	 */
-	public function __construct($entityName, LocatorInterface $locator)
+	public function __construct($entityName, LocatorInterface $locator = null)
 	{
 		$this->entityName = $entityName;
 		$this->builder = new EntityBuilder($locator);
@@ -86,7 +86,7 @@ class Repository implements RepositoryInterface
 	{
 		$this->buildPrototype();
 
-		return $this->findOne()->with($this->prototype->key(), Operator::EQUAL, $id)->get();
+		return $this->findOne()->with($this->prototype->domainKey(), Operator::EQUAL, $id)->get();
 	}
 
 	/**
