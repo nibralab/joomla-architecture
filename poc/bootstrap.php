@@ -80,9 +80,9 @@ class SeoMiddleware implements Middleware
 	{
 		$values = (new Repository('seo'))->findById($request->getUri()->getPath());
 
-		foreach ($values->keys() as $key)
+		foreach ($values->asArray() as $key => $value)
 		{
-			$request = $request->withAttribute($key, $values->$key);
+			$request = $request->withAttribute($key, $value);
 		}
 
 		return $next($request, $response);

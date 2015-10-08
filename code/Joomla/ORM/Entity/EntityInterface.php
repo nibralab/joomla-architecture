@@ -91,4 +91,11 @@ interface EntityInterface
 	 * @return  mixed
 	 */
 	public function __set($property, $value);
+
+	/**
+	 * Get the field values
+	 *
+	 * @return  array  The field values, indexed by field name
+	 */
+	public function asArray();
 }
