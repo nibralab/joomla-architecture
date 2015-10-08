@@ -1,0 +1,15 @@
+{
+    "name": "nibra/joomla-architecture",
+    "description": "A playground for concepts, that might be used in Joomla!4",
+    "require": {
+        "psr/http-message": "^1.0@dev"
+    },
+    "license": "GPL2+",
+    "authors": [
+        {
+            "name": "Niels Braczek",
+            "email": "nbraczek@bsds.de"
+        }
+    ],
+    "minimum-stability": "dev"
+}
