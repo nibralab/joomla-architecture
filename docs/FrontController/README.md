@@ -45,7 +45,7 @@ it is used for CLI access as well.
 ### Mapping HTTP properties to CLI properties
 
   - `ProtocolVersion`: CLI version, currently always '1.0'.
-  - `Headers`: Fake headers, e.g., for `content-type` ('text/plain' or 'text/ansi').
+  - `Headers`: Fake headers, e.g., for `Accept:` ('text/plain' or 'text/ansi').
   - `Body`: Usually empty. May be used to transport data from files (e.g., import files)
   - `RequestTarget`: The script name, usually 'joomla.php', followed by the sub-command.
   - `Method`: Always 'CLI'.
@@ -63,6 +63,8 @@ it is used for CLI access as well.
   - [zend/diactoros](https://github.com/zendframework/zend-diactoros)
 
 ## Routing
+
+> This is channel dependent. Output is a `ServerRequestInterface` instance.
 
 The job of the `Router` is to determine, which command has to be issued. It abstracts the input environment.
 
@@ -104,7 +106,17 @@ $request = $router->route($request);
 
 The `Router` calls the routing strategy chain, returning a modified `ServerRequestInterface` instance.
 
+## Renderer Creation
+
+The `Renderer` is created dependent on the `Accept:` header of the request.
+
+```php
+$renderer = (new RendererFactory)->create($request->getHeaderLine('accept'));
+```
+
 ## Command Creation
+
+> This is channel independent. Input is a `ServerRequestInterface` instance. Output is a `Command` instance.
 
 Next, the `Command` is located. To keep that flexible, strategies are used here as well.
 Depending on the values in `$request`, the strategies try to locate a corresponding command.
@@ -130,6 +142,8 @@ $command = $locator->find($request);
 
 ## Command Execution
 
+> This is channel independent. Input is a `Command` instance. Output is a `Content` item (tree).
+
 The `Command` is handled by a `CommandBus`, which supports nested middleware.
 Each Middleware is a separate object and can do anything it wants.
 
@@ -143,6 +157,11 @@ $commandBus = new CommandBus([
 $dispatcher->trigger('onCommandBusSetup', $commandBus);
 
 $content = $commandBus->handle($command)
+
+if (!$content instanceof 'Content')
+{
+    $content = new LegacyContentItem($content);
+}
 ```
 
 > **Note:** Maybe parts of the command location process should go into the `CommandHandlerMiddleware`.
@@ -152,3 +171,76 @@ $content = $commandBus->handle($command)
   - [league/tactician](http://tactician.thephpleague.com/)
   
 ## Rendering
+
+> This is channel dependent. Input is a `Content` item (tree). Output is a `Response` object.
+
+```php
+$renderer = (new RendererFactory)->create($request->getHeaderLine('accept'));
+$content->accept($renderer);
+$response = new Response($renderer->getContent(), $renderer->getStatus(), $renderer->getHeaders());
+```
+
+**External Dependencies:**
+
+  - [psr/http-message](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message.md)
+
+## Compiled Code
+
+```php
+function prepareInput()
+{
+    // CLI environment, in joomla.php
+    $router = new Router([
+        new CliRoutingStrategy
+    ]);
+    
+    // WebAPI environment, in api.php
+    $router = new Router([
+        new ApiRoutingStrategy
+    ]);
+    
+    // Browser environment, in index.php
+    $router = new Router([
+        new SeoRoutingStrategy,
+        new LegacyRoutingStrategy,
+        new DefaultRoutingStrategy
+    ]);
+    
+    $dispatcher->trigger('onRouterSetup', $router);
+    
+    $request = $router->route((new ServerRequestFactory)->createFromGlobals());
+}
+
+function prepareOutput($request)
+{
+    $renderer = (new RendererFactory)->create($request->getHeaderLine('accept'));
+    $response = new Response($renderer);
+}
+
+function handle($input, $output)
+{
+    $locator  = new CommandLocator([
+        new DatabaseLocatorStrategy,
+        new LegacyMvcLocatorStrategy
+    ]);
+    
+    $dispatcher->trigger('onCommandLocatorSetup', $locator);
+    
+    $command = $locator->find($input);
+    
+    $commandBus = new CommandBus([
+        new LoggingMiddleware($logger),
+        new EventMiddleware($emitter),
+        new CommandHandlerMiddleware
+    ]);
+    
+    $dispatcher->trigger('onCommandBusSetup', $commandBus);
+    
+    $commandBus->handle($command, $output)
+}
+
+$input  = prepareInput();
+$output = prepareOutput($input);
+handle($input, $output);
+$output->emit();
+```
