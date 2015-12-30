@@ -33,6 +33,9 @@ class Repository implements RepositoryInterface
 	/** @var  Entity  Prebuilt (empty) entity */
 	private $prototype = null;
 
+	/** @var EntityBuilder  */
+	private $builder;
+
 	/**
 	 * Constructor
 	 *
@@ -86,7 +89,7 @@ class Repository implements RepositoryInterface
 	{
 		$this->buildPrototype();
 
-		return $this->findOne()->with($this->prototype->domainKey(), Operator::EQUAL, $id)->get();
+		return $this->findOne()->with($this->prototype->key(), Operator::EQUAL, $id)->get();
 	}
 
 	/**
