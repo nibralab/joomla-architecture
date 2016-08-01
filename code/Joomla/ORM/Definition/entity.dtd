@@ -1,8 +1,9 @@
 <!ELEMENT entity ((storage)?, fields, (relations)?)>
 <!ATTLIST entity
     name NMTOKEN #REQUIRED>
+    primary NMTOKEN #IMPLIED>
 
-<!ELEMENT storage (default|api|special)>
+<!ELEMENT storage (default|csv|api|special)>
 
 <!ELEMENT default EMPTY>
 <!ATTLIST default
@@ -12,6 +13,10 @@
 <!ATTLIST api
     base-url CDATA #IMPLIED
     handler CDATA #REQUIRED>
+
+<!ELEMENT csv EMPTY>
+<!ATTLIST csv
+    file CDATA #REQUIRED>
 
 <!ELEMENT special EMPTY>
 <!ATTLIST special
