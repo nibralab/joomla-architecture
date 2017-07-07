@@ -36,17 +36,6 @@
     <!ELEMENT field (validation|option)*>
     <!ATTLIST field
         name ID #REQUIRED
-        type NMTOKEN #FIXED "string"
-        size CDATA #REQUIRED
-        imput NMTOKEN #IMPLIED
-        default CDATA #IMPLIED
-        filter CDATA #IMPLIED
-        required (true|false) "false"
-        label CDATA #IMPLIED
-        description CDATA #IMPLIED
-        hint CDATA #IMPLIED>
-    <!ATTLIST field
-        name ID #REQUIRED
         type NMTOKEN #REQUIRED
         size CDATA #IMPLIED
         imput NMTOKEN #IMPLIED
