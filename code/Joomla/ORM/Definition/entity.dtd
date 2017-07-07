@@ -1,6 +1,6 @@
 <!ELEMENT entity ((storage)?, fields, (relations)?)>
     <!ATTLIST entity
-        name NMTOKEN #REQUIRED
+        name CDATA #REQUIRED
         role (primary|lookup|map|inline|default) "default">
 
     <!ELEMENT storage (default|csv|api|special)>
